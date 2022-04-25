@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Divisibility}{1}{0}{1}
+\beamer@sectionintoc {2}{GCD}{7}{0}{2}
+\beamer@sectionintoc {3}{Group Def.}{11}{0}{3}
+\beamer@sectionintoc {4}{Cyclic Group}{19}{0}{4}
+\beamer@sectionintoc {5}{*Extra Topic}{24}{0}{5}

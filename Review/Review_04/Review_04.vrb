@@ -1,0 +1,18 @@
+\frametitle{Probelm}
+    \hbox{
+    \begin{lstlisting}
+    unsigned long int mult(unsigned long int a, unsigned long int b) {
+        int i, n, N;
+        unsigned long int x0,y0,z0,z1=1;
+        if(a<b) SWAP(a,b);
+        if(b==0) return 0;
+        for(n=-1, i = 1; i <= b; i<<=1, n++); /* not optimal */
+        for(N=n; i <= a; i<<=1, N++);
+
+        y0=b&((1<<n)-1);
+        x0=a&((1<<N)-1);
+        z0=mult(x0,y0);
+        i=N+n;
+        return ((z1<<i)+(x0<<n)+(y0<<N)+z0);
+    }\end{lstlisting}
+    }

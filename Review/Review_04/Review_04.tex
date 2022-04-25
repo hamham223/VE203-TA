@@ -1,0 +1,432 @@
+\documentclass{beamer}
+\newcommand{\myfont}{\rmfamily\normalsize\upshape\mdseries}
+\newcommand{\degree}{^\circ}
+\title{\sffamily Review IV(Slides 226 - 274)}
+\subtitle{\textbf{Basic Number Theory\& Group Theory}\\}
+\institute[UM-SJTU JI]{University of Michigan-Shanghai Jiao Tong University Joint Institute}
+\author{HamHam}
+\usepackage{graphicx}
+\usepackage{picinpar}
+\usepackage{ctex}
+\usepackage{indentfirst}
+\usepackage{chemformula}
+\usepackage{geometry}
+\usepackage{subfigure}
+\usepackage{appendix}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{multicol,multirow,multido}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{textpos}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{upgreek}
+\usepackage{JI_MathCourse_Notations}
+%\input{../../List_of_Notation/JI_MathCourse_Notations.sty}
+\ctexset{today=old}
+\usetheme[dove]{Boadilla}
+\usecolortheme{dolphin}
+\useoutertheme{miniframes}
+\begin{document}
+    \usebackgroundtemplate{\tikz\node[opacity=0.25]{
+    \includegraphics[width=\paperwidth,
+    height=\paperheight]{hamster.jpg}
+    };}
+\begin{titlepage}
+    \begin{center}
+        VE203 - Discrete Mathmatics 
+    \end{center}
+\end{titlepage}
+\myfont
+\section{Divisibility}
+\begin{frame}
+    \frametitle{Divisibility}
+    \sffamily\blue{Definition}\\
+    \hh \myfont
+        Let $n,d \in \bZ$, we say that $d$ divides n 
+    if $n = dk$ for some $k \in \bZ$. That is
+        $$d \mid n \LRarrow \exists k\in \bZ ~(n=dk)$$
+    \hh
+        We can see that $\mid$ is a \textbf{pre-order} on 
+    $\bZ$ but $\left(\bN,\mid\right)$ is a \textbf{poset}. \red{(Why?)} For
+    simplicity we will discuss divisibility on natural numbers more in
+    number theory. \red{Zero?}
+    \\ \vv \yellow{Properties:}\\
+    \begin{itemize}
+        \item $a\mid a$
+        \item $a\mid b \wedge b\mid c \Rarrow a \mid c$
+        \item $a \mid b \wedge b \mid a \Rarrow a=\pm b$
+    \end{itemize}
+\end{frame}
+\newcommand{\mydef}[1]{\sffamily\blue{#1}\myfont\\}
+\begin{frame}
+    \frametitle{Prime Numbers}
+    \mydef{Definition}
+    \hh \myfont A natural number $p \in \bN$ is a \textbf{prime number} if $p \geq 2$ and is
+    divisible by $1$ and itself only. The set of primes is denoted by $\bP$.\\\vv
+    \mydef{Unique Factorization}
+    \hh \myfont Every positive integer $n \geq 2$ can be \textbf{uniquely} expressed 
+    in the form
+        $$n = \prod_{i=1}^k p_i ^ {\alpha_i},~p_i\in \bP ,~ \alpha_i \in \bZ^{+}$$
+    \\
+    \mydef{Typical Example}
+    \hh Better to memoerize if you can:
+    \begin{itemize}
+        \item Fermat Primes
+        \item Mersenne Primes
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Infinitude of Prime}
+    \mydef{Theorem}
+    \hh There are \textit{infinitely} many primes.
+    \begin{itemize}
+        \item \yellow{Proof of Euclid.
+        \item Proof by contraposition}
+    \end{itemize}
+    \vs{0.3em}
+    \mydef{Theorem (Dirichlet)}
+    \hh There are \textit{infinitely} many primes of the 
+    form $an + b$ where $a, b$ are coprime. Speical cases include:
+    \begin{itemize}
+        \item $2n+1$
+        \item $3n+2$ (Consider the product of all primes of such form)
+        \item $4n+1$ (Slides 235)
+        \item $4n-1$ (How to construct the product?)
+    \end{itemize}
+    \vs{0.3em}
+    \mydef{Distance Grows}
+    \hh For any large $n$, there exists successive $n$ numbers that are not prime.
+\end{frame}
+\begin{frame}
+    \frametitle{Exericse}
+    1. Prove part of \textbf{Wilson's Theorem}: \\\vs{0.3em}
+    \hh Let $p>1$,  $p$ is a not prime iff $p \mid (p-1)!$.
+    \pause
+    \\\vv \yellow{Solution:}\\
+    \begin{itemize}
+        \item If $p$ is a prime, then $p$ is not divisible 
+        by any number from $1$ to $p-1$, so $p \nmid (p-1)!$.
+        \item If $p$ is not prime and is a square, $p=k^2, k>2$. Since $k<p-1$, $2k<p-1$,
+         we conclude that $k\cdot (2k) \mid (p-1)!$.
+        \item Otherwise, there exists two factors $a,b, a\neq b$, 
+        so that $p=ab$. Since $a<p-1$, $b<p-1$, we have $p=ab\mid (p-1)!$.
+    \end{itemize}
+\end{frame}
+\section{GCD}
+\begin{frame}
+    \frametitle{Division Algorithm}
+    \mydef{Theorem ((Long) Division Algorithm)}
+    \hh Given $m, n \in \bN \cut \{0\}$, there \textbf{exist} \textit{unique} 
+    integers $q$ and $r$ with $q \geq 0$ and $0 \leq r < m$ so that $n = qm + r$.
+    \\\vs{0.5em}\large{\red{The proof may sounds simple, but it is meaningful!}}
+    \\\vs{0.5em}\yellow{Uniqueness:}
+    $$m \mid (r_1-r_2) \wedge |r_1-r_2| < m\Rarrow F$$
+    \yellow{Existence:}
+    $$k=qm+r \Rarrow k+1 =
+        \begin{cases}
+            qm + (r+1) \text{, if }r+1<m\\
+            q(m+1) + 0 \text{, if }r+1=m
+        \end{cases}
+    $$
+    Also pay attention to the case that
+    $1= 1 \cdot 1+0 \text{ or } 1 = 0 \cdot m +1$
+\end{frame}
+\begin{frame}
+    \frametitle{Greatest Common Divisor}
+    \mydef{Definition}
+    \hh Let $a, b \in \bZ \cut \{0\}$, The greatest common divisor of $a$ and $b$,
+    denoted by $\gcd(a, b)$, is the greatest positive integer $d$ such that
+    $d\mid a \wedge d \mid b$.\\
+    \vv
+    \hh Notice that $$(N, \mid, \wedge := \gcd, \vee := (a, b) \mapsto \frac{ab}{\gcd(a,b)}
+    )$$ is a \textbf{lattice} where $\top  = 0$ and $\bot = 1$.
+    \\ \vv
+    \mydef{Least Common Multiple}
+    $$\operatorname{lcm}(a,b)=\frac{ab}{\gcd(a,b)}$$
+\end{frame}
+\begin{frame}
+    \frametitle{Euclidean Algorithm}
+    \hh A recursive algorithm to calculate the greatest
+    common divisor between two integers:
+    $$\operatorname{gcd}(a, b)= \begin{cases}\operatorname{gcd}(b, r\,(a, b)) & b \neq 0 \\ a & b=0\end{cases}$$
+    \\ \hh *Interesting names: {\kaishu 辗转相除法、更相减损术}\\\vv
+    \mydef{Theorem (Bezout)}
+    \hh The equation $ax + by = c$ of $x$ and $y$ where $a, b, c \in \bZ$ has integer
+    solutions iff $\gcd(a, b)\mid c$.
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    2. Let $F_n$ be Fermat Primes, i.e. $F_n=2^{2^n} +1$. Prove that they are 
+    pairwise coprime, namely $\gcd(F_n,F_m)=1.$
+    \\\vs{5em}
+    3. Use the \textbf{Euclidean Algorithm} to find a integer pair $(x,y)$ that 
+    $111x-321y=75.$ 
+\end{frame}
+\section{Group Def.}
+\begin{frame}
+    \frametitle{Groups}
+    \fbox{
+    \parbox{0.95\textwidth}{
+	\par A \textbf{group} is a pair $(G, \cdot)$, where $G$ is a set, and $\cdot : G \times G \to G$ is a law of composition that has the following properties:
+	\begin{itemize}
+        \item[-] \blue{Closure:} The generalized product is defined as $\cdot: G\times G \to G$
+		\item[-] \blue{Associativety:} $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ for all $a, b, c \in G$;
+		\item[-] \blue{Identity:} $G$ contains an identity element 1, such that $1 \cdot a = a \cdot 1 = a$ for all $a \in G$;
+		\item[-] \blue{Inverse:} Every element $a \in G$ has an inverse, an element $b$ such that $a \cdot b = b \cdot a = 1$.
+	\end{itemize}
+	\par \phantom{ji}
+	\par An \textbf{abelian group} is a group whose law of composition is commutative $(a \cdot b = b \cdot a)$. 
+	} 
+    }
+\end{frame}
+\begin{frame}
+    \frametitle{Properties}
+    \fbox{
+	\parbox{0.95\textwidth}{
+		\par Given a group $G$, $a, b, c \in G$, then
+		\begin{itemize}
+			\item[-] there exists a \textbf{unique} identity element; 
+            \\$\to$ suppose there are two distinct identity $i$ and $j$, then $i \cdot j = i = j$ 
+			\item[-] $ba = ca \Rightarrow b = c$ and $ab = ac \Rightarrow b = c$;  \\$\to$ multiply by $a^{-1}$ on both sides, note that a group does not necessarily satisfy the commutative law
+			\item[-] For all $a \in G$, there exists a unique element $b \in G$ such that $ab = ba = 1$; \\ $\to$ prove existence ($b = a^{-1}$) first, then prove uniqueness by contradiction
+			\item[-]  $(ab)^{−1} = b^{-1}a^{-1}$. \\$\to$$(ab)^{−1}(ab) = 1$; $(b^{-1}a^{-1})(ab) = b^{-1}(a^{-1}a)b = 1$	
+		\end{itemize}
+	}
+    }
+\end{frame}
+\begin{frame}
+    \frametitle{Subgroup}
+    \fbox{
+	\parbox{0.95\textwidth}{
+		\par A subset $H$ of a group $G$ is a subgroup if it has the following properties:
+		\begin{itemize}
+			\item[-] Closure: If $a, b \in H$, then $ab \in H$;
+			\item[-] Identity: $1 \in H$;
+			\item[-] Inverses: If $a \in H$, then $a^{-1} \in H$.
+		\end{itemize}
+		\par Look carefully at the identity and inverse axioms for a subgroup:
+		\begin{itemize}
+			\item[-] In verifying the identity axiom for a subgroup, the issue is not the existence of an identity 
+            but \textbf{whether the identity for the group is actually contained in the subgroup}.
+			\item[-] Likewise, for subgroups the issue of inverses is not whether inverses exist (every element of a group has an inverse) 
+            but \textbf{whether the inverse of an element in the subgroup is actually contained in the subgroup}.
+		\end{itemize}
+	}
+}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    4.  Given a group $G$ and its two distinct subgroups $H_1$ and $H_2$. 
+    Check whether the following sentences are true or false:
+    \begin{itemize}
+        \item The identity element in $G$ and $H_1$ must be the same.
+        \item $H_1\cup H_2 $ is a group.
+        \item $H_1 \cap H_2$ cannot be empty and it is a group.
+        \item A subset in $G$ that is not a subgroup may be a group.
+    \end{itemize}
+    \vv \hh
+    \textit{Comment.} Compare to the concept of \textbf{vector space}.
+    If necessary, take Vv186.
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    5. $\mathbb{Z}^2 = \mathbb{Z} \times \mathbb{Z}$ denotes the set of pairs of integers: 
+    $$ \mathbb{Z}^2 = \{(m, n) \mid m, n \in \mathbb{Z}\}.$$ 
+    It is a group under ``vector addition'', that is, 
+    $$(a, b) + (c, d) = (a + c, b + d).$$ 
+    Consider the set $$H = \{(x, y) \mid x + y \geqslant 0\}.$$ 
+    Check if $H$ is a subgroup of $\mathbb{Z}^2$.
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    6. Let $G$ be a group and let $H \subset G$ with $H \neq \varnothing$. 
+    If $\forall a, b \in H$ we have $ab^{-1} \in H$ then $H$ is a subgroup of $G$.
+    \pause
+    \\\vv\yellow{Solution:}\\
+    \hh Since $H \subset G$, any operation in $H$ has associativity. Then, we need to verify closure, identity, and inverses requirements but we need to
+    do these in a particular order. 
+    \begin{enumerate}
+        \item  Since $H \neq \varnothing$, pick any $a \in H$. Then $aa^{-1} = e \in H$, so $H$ has the identity.
+        \item Pick any $a \in H$. Since the identity $e \in H$, then $ea^{-1} = a^{-1} \in H$ so we have inverses. 
+        \item Pick any $a, b \in H$. Then $b^{-1} \in H$ and denote as $c \in H$. So, $ac^{-1} \in H$ according to the problem statement. So, $ab = a(b^{-1})^{-1} = ac^{-1} \in H$ and we have closure.	
+    \end{enumerate}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    7.$^*$ Let $G$ be a group. If $\forall x \in G : x^2 = e$, show that $G$ is an abelian group.
+    \\ \vv
+    \yellow{Solution:}
+    \\ \vv
+    From $\forall x \in G : x^2 = e$, we obtain $x = x^{-1}$.
+    \par Therefore, taking $\forall x,y \in G$, we have $$xy = (xy)^{-1} = y^{-1}x^{-1} = yx.$$
+    \par This completes the proof.
+    
+\end{frame}
+\section{Cyclic Group}
+\begin{frame}
+    \frametitle{Cyclic Group}
+    \fbox{
+	\parbox{0.95\textwidth}{
+	\par The cyclic subgroup generated by $g$ is
+	$$
+	\left\langle g \right\rangle = \{g^k \mid k \in \mathbb{Z}\}.
+	$$
+	\par In other words, $\left\langle g \right\rangle$ consists of all (positive or negative) powers of $g$.
+	$$
+	\left\langle g \right\rangle = \{k \cdot g \mid k \in \mathbb{Z}\}.
+	$$
+	\par Be sure you understand that the difference between the two forms is simply notational: It’s the same concept.
+	\par \phantom{ji}
+    \par Let $G$ be a group, $g \in G$. The order of $g$ is the smallest positive 
+    integer $n$ such that $g^n = 1$ $(ng = 0)$. 
+    If there is no positive integer $n$ such that $g^n = 1 $ $(ng = 0)$, 
+    then $g$ has \textbf{infinite} order.
+	}
+}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    8. List the elements of the subgroups generated by 
+    elements of $\mathbb{Z}_8 = \{0,1,2,3,4,5,6,7\}$.
+    \pause
+    \\\vv \yellow{Solution:}
+    $$
+    \begin{aligned}
+    &\langle 0\rangle=\{0\} \\
+    &\langle 2\rangle=\langle 6\rangle=\{0,2,4,6\} \\
+    &\langle 4\rangle=\{0,4\} \\
+    &\langle 1\rangle=\langle 3\rangle=\langle 5\rangle=\langle 7\rangle=\{0,1,2,3,4,5,6,7\} = \mathbb{Z}_8
+    \end{aligned}
+    $$
+    \begin{block}{Question}
+        \hh What is the identity? Order?
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}  
+    9. Prove that
+    \begin{enumerate}
+        \item Let $G = \left\langle g \right\rangle$ be a finite cyclic group, where $g$ has order $n \neq 0$. Then the powers $\{1, g, \cdots , g^{n−1}\}$ are distinct.
+        \item Let $G = \left\langle g\right\rangle $ be infinite cyclic. If $m$ and $n$ are integers and $m \neq n$, then $g^m \neq g^n$.
+    \end{enumerate}
+    \pause
+    \yellow{Solution:}\\
+    \begin{enumerate}
+        \item Since $g$ has order $n$, $g, g^2, \cdots, g^{n−1}$ are all different from 1.
+        \par Suppose $g^i = g^j$ where $0 \leqslant j < i < n$. Then $0 < i − j < n$ and $g^{i−j} = 1$, contrary to the preceding observation.
+        \par Therefore, the powers $\{1, g, \cdots , g^{n−1}\}$ are distinct.
+        \item Suppose without loss of generality that $m > n$. We want to show that $g^m \neq g^n$.
+        \par Suppose this is false, so  $g^m = g^n$. Then $g^{m−n} = 1$, so $g$ has finite order $m-n$. This contradicts the fact that a	generator of an infinite cyclic group has infinite order. Therefore,  $g^m \neq g^n$.
+    \end{enumerate}
+\end{frame}
+\section{*Extra Topic}
+\begin{frame}
+    \frametitle{Divide \& Conquer}
+    \red{This is just standby. If we really have time.}
+    \\
+    Recall Manuel's h5 ex6:
+    \begin{enumerate}
+        \item Detail Karatsuba algorithm in the README file (search it on internet).
+        \item Add comments to the code to describe what is done, line by line.
+        \item Explain in the README file what specific adjustments were made to the algorithm in order to
+        improve the efficiency.
+        \item Search online what is a divide an conquer strategy.
+        \item Using a divide and conquer approach, together with the operators \&, $\mid$, << and >> , write an
+        efficient function to replace the for loops marked as ``not optimal''.
+    \end{enumerate}
+    Link: \url{https://www.bilibili.com/video/BV1jS4y197PV}
+\end{frame}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mypurple}{rgb}{0.58,0.02,0.82}
+\definecolor{myblue}{rgb}{0.1,0.2,0.9}
+\definecolor{myorange}{rgb}{0.73,0.38,0.17}
+% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\lstset{%
+	language=C++,
+	backgroundcolor=\color{white},
+	basicstyle=\tiny,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=t,
+	commentstyle=\color{mygreen},
+	deletekeywords={...},
+	escapeinside={\%*}{*)},
+	extendedchars=true,
+	frame=single,
+	keepspaces=true,
+	keywordstyle=\color{blue},
+	language=Octave,
+	%otherkeywords={*,...},
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\tiny\color{mygray},
+	rulecolor=\color{black},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=1,
+	stringstyle=\color{mymauve},
+	tabsize=4,
+	title=\lstname
+}
+
+\lstdefinestyle{customcpp}{
+	belowcaptionskip=0pt,
+	breaklines=true,
+	%frame=L,
+	%xleftmargin=\parindent,
+	language=C++,
+	showstringspaces=false,
+	basicstyle=\scriptsize\ttfamily,
+	keywordstyle=\bfseries\color{mypurple},
+	commentstyle=\itshape\color{green!40!black},
+	identifierstyle=\color{myblue},
+	stringstyle=\color{myorange},
+}
+
+\lstset{escapechar=@,style=customcpp}
+\begin{frame}[fragile]
+    \frametitle{Probelm}
+    \hbox{
+    \begin{lstlisting}
+    unsigned long int mult(unsigned long int a, unsigned long int b) {
+        int i, n, N;
+        unsigned long int x0,y0,z0,z1=1;
+        if(a<b) SWAP(a,b);
+        if(b==0) return 0;
+        for(n=-1, i = 1; i <= b; i<<=1, n++); /* not optimal */
+        for(N=n; i <= a; i<<=1, N++);
+        
+        y0=b&((1<<n)-1);
+        x0=a&((1<<N)-1);
+        z0=mult(x0,y0);
+        i=N+n;
+        return ((z1<<i)+(x0<<n)+(y0<<N)+z0);
+    }\end{lstlisting}
+    }
+\end{frame}
+\begin{frame}
+    \frametitle{Reference}
+    \begin{itemize}
+        \item Problem from Vg101 Manuel Homework 5.
+        \item Examples from Dr. Cai Runze's Sildes.
+        \item Exercises from 2021-Fall-Ve203 TA Zhao Jiayuan
+        \item Contents from 2021-Fall-Ve203 Mid\_2 RC by Xue Runze
+    \end{itemize}
+\end{frame}
+\end{document}
