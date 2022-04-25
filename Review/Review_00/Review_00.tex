@@ -1,0 +1,192 @@
+\documentclass{beamer}
+\renewcommand\thesection{\arabic{section}}
+\newcommand{\myfont}{\rmfamily\normalsize\upshape\mdseries}
+\newcommand{\degree}{^\circ}
+\title{\sffamily Pre-Review }
+\subtitle{\textbf{Welcome to Discrete Mathematics}\\}
+\institute[UM-SJTU JI]{University of Michigan-Shanghai Jiao Tong University Joint Institute}
+\author{HamHam}
+\usepackage{graphicx}
+\usepackage{picinpar}
+\usepackage{ctex}
+\usepackage{indentfirst}
+\usepackage{chemformula}
+\usepackage{geometry}
+\usepackage{subfigure}
+\usepackage{appendix}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{bm,bbm}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{multicol,multirow,multido}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{color,xcolor}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{textpos}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{pgf}
+%\usepackage{subfig}
+\CTEXoptions[today=old]
+\input{../../List_of_Notation/JI_MathCourse_Notations.sty}
+\usetheme[dove]{Boadilla}
+\usecolortheme{dolphin}
+%\pgfdeclaremask{figmask}{or_circuit.jpg}
+%\pgfdeclareimage[mask=figmask,width=0.6\textwidth]{or_circuit}{or_circuit_1.png}
+\useoutertheme{miniframes}
+\begin{document}
+    \usebackgroundtemplate{\tikz\node[opacity=0.3]{
+    \includegraphics[width=\paperwidth,
+    height=\paperheight]{hamster.jpg}
+    };}
+\begin{titlepage}
+    \begin{center}
+        VE203 - Discrete Mathmatics 
+    \end{center}
+\end{titlepage}
+\myfont
+\begin{frame}
+    \frametitle{Why Discrete?}
+    \hh The content is actually ``discrete"!
+    In this short and “happy” spring semester, you're going to learn the following:
+    \vv
+    \begin{itemize}
+        \item Sets, Logics
+        \item Relations
+        \item Group Theory
+        \item Number Theory
+        \item Counting
+        \item Graph Theory 
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{``Discrete'' Instructors}
+    \hh Compared to Vv186 course sequence which has a nice and unique
+    instructor on the whole interval, Ve203 sounds to be more ``discrete''.
+    \begin{table}[htbp]
+        \begin{tabular}{ccc}
+        \toprule
+        Time Peirod &Instructor(s)  &\textit{Comment.}  \\
+        \midrule
+        2011(?)\textasciitilde2015(?) &Horst Hohberger  &  Earliest math founder in JI\\
+        ??? & Horst \& Manuel & Really heavy workload \\
+        2015(?)\textasciitilde2019 &Zach McKenzie  &  200 Enrollments at most\\
+        2020 SU &Heidi Andersen  & Leave becase the epidemic\\
+        2020 FA& Horst Hohberger & Just for emergency\\
+        2021 SP& Zach McKenzie & Leave JI later\\
+        2021 SU\textasciitilde & Runze Cai & \\
+        \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+\begin{frame}
+    \frametitle{``Discrete'' Slides}
+    \begin{figure}
+        \subfigure[]{\includegraphics[width=0.45\textwidth]{slides1.jpg}}
+        \subfigure[]{\includegraphics[width=0.45\textwidth]{slides.jpg}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{``Discrete'' TAs}
+  
+    \begin{itemize}
+        \kaishu
+        \item 2019 SU: 仇天宇、朱辰宇、范哲良
+        \item 2019 FA: 严欣愉、刘紫薇、朱辰宇 
+        \item 2020 SU: 严欣愉、仇天宇、郑慧昕
+        \item 2020 FA: 张谷韬、彭程俊
+        \item 2021 SP: 严欣愉、靳浩翔、俞泽晟
+        \item 2021 SU: 靳浩翔、明星宇
+        \item 2021 FA: 赵佳源、薛润泽
+        \item 2022 SP: 黄昱程、肖子聪、小仓鼠
+        \item 2022 SU: ?
+    \end{itemize}
+    \vs{0.5em}
+    Special thanks to {\kaishu 张谷韬}, {\kaishu 严欣愉} and {\kaishu 赵佳源}!
+\end{frame}
+\begin{frame}
+    \frametitle{``Discrete'' Students?}
+    \centering
+    \Huge
+    \red{ No!}
+    \\ \vs{2em}
+    The followings are for you!
+\end{frame}
+\begin{frame}
+    \frametitle{Recommended Books \& Websites}
+    \begin{itemize}
+        \item Kenneth, H.Rosen. Translated by Xu Liutong etc. \itshape Discrete Mathematics amd Its Applications\myfont, 
+        Eightth Edition, Chinese Abridgement. China Machine Press, 2019 print.
+        \item E. Knuth, Donald. Translated by Su Daolin. \textit{The art of Computer Programming}, third edition.
+        Beijing: National Defense Industry Press, 2007.6 print.
+        \item \url{www.mhhe.com/rosen}
+        \item \url{https://vijos.org/}
+        \item \url{https://leetcode.com/}
+    \end{itemize}
+
+\end{frame}
+\begin{frame}
+    \frametitle{Concept Checking Paper}
+    The content of the CCPs (Concept Checking Papers) are shown below.
+    \begin{itemize}
+        \item CCP01: \*\*\* Logics \& Sets \& Induction
+        \item CCP02: \*\*\* Equinumerosity \& Relations
+        \item CCP03: \*\*\* Partial Order \& Cardinality
+        \item CCP04: \*\*\* Divisibility \&  Euclidean Algorithm
+        \item CCP05: \*\*\* Basic Group Definitions
+        \item CCP06: \*\*\* Homomorphism \& Cosets \& Modular Arithmetic
+        \item CCP07: \*\*\* Counting \& Inclusion-Exclusion Principle
+        \item CCP08: \*\*\* Linear Recurrence Equations \& Asymptotic Notations \& Master Method
+        \item CCP09: \*\*\* Basic Graph Theory \& Bipartite Graph
+        \item CCP10: \*\*\* Trees \& Kruskal's Algorithm \& Dijkstra's Algorithm
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{RC Policy}
+    \hh
+    My recitation class will contain the following elements.
+    \vv
+    \begin{itemize}
+        \item Review of Concepts
+        \item Explanation for difficult contents in the slides
+        \item In-class Exercises
+        \item Extra Topic($\leq 15 \text{[min]}$)
+            \begin{itemize}
+                \item \textit{I hope it is interesting!}
+                \item \textit{won't be too difficult!}
+                \item \textit{Sometimes includes coding!}
+            \end{itemize}
+    \end{itemize}
+    \vs{2em}
+    Feel free to interupt me at any time!\\
+    I also plan to do OH-Feedback this term!
+\end{frame}
+\begin{frame}
+    \frametitle{Extra Topic}
+    Below are the extra topics that I'm planning to talk about:
+    \begin{itemize}
+        \item Boolean Algebra (Karnaugh Graph)
+        \item Sort Algorithms (Quick Sort + Improved Bubble Sort)
+        \item Prime Spiral (Bilibili Video)
+        \item Divide-and-Conquer Algorithm (Fast Modular Exponentiation)  
+        \item Catalan Numbers \& Generating Function
+        \item Dynamic Programming (Backpack problem)
+        \item Union and Find Set (Relatives or not)
+        \item Ramsay's Problem (Hand Shaking)
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{End}
+    \Huge
+    \centering
+    Thanks!
+\end{frame}
+\end{document}
