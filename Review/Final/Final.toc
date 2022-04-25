@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Terminology}{1}{0}{1}
+\beamer@sectionintoc {2}{Connectivity}{9}{0}{2}
+\beamer@sectionintoc {3}{Matching}{13}{0}{3}
+\beamer@sectionintoc {4}{Farewell}{21}{0}{4}
