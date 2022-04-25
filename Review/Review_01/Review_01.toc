@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Operations}{1}{0}{1}
+\beamer@sectionintoc {2}{Induction}{7}{0}{2}
+\beamer@sectionintoc {3}{DNF \& CNF}{13}{0}{3}
+\beamer@sectionintoc {4}{*Extra Topic}{18}{0}{4}
