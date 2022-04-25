@@ -1,0 +1,281 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iffalse 
+Copyright 2021 by Leyang Zhang, Yinchen Ni, Yuxiang Chen, Yue Huang
+
+You should not spread this file without the permission from every one of 
+    Leyang Zhang, Yinchen Ni and Yuxiang Chen 
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ProvidesPackage{JI_MathCourse_Notations}[2021/12/19]
+
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage{bm}
+\RequirePackage{bbm}
+\RequirePackage{color}
+
+
+%Typesetting
+
+%colors 
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}                         %blue
+\newcommand{\cha}[1]{\textcolor[rgb]{0.95,0.75,0.9}{#1}}            %cha-type color 
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}                         %grey
+\newcommand{\pink}[1]{\textcolor{pink}{#1}}                         %pink
+\newcommand{\red}[1]{\textcolor[rgb]{0.75,0,0}{#1}}                 %red
+\newcommand{\yellow}[1]{\textcolor{orange}{#1}}                     %yellow
+
+%declarations of Math lines, turn off code checker before using them
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\beqa}{\begin{equation}\begin{aligned}}
+\newcommand{\beqNo}{\begin{equation*}}
+\newcommand{\beqaNo}{\begin{equation*}\begin{aligned}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\eeqa}{\end{aligned}\end{equation}}
+\newcommand{\eeqNo}{\end{equation*}}
+\newcommand{\eeqaNo}{\end{aligned}\end{equation*}}
+
+%space 
+\newcommand{\hh}{\hspace{1em}}
+\newcommand{\hs}[1]{\hspace{#1}}
+\newcommand{\vs}[1]{\vspace{#1}}
+\newcommand{\vv}{\vspace{1em}}
+
+
+%-------------------------------------------------------------------
+
+
+%Letter-like Notations 
+
+%A - Z notations 
+\newcommand{\bA}{\mathbb{A}}    \newcommand{\calA}{\mathcal{A}}     \newcommand{\fA}{\mathfrak{A}}
+\newcommand{\bB}{\mathbb{B}}    \newcommand{\calB}{\mathcal{B}}     \newcommand{\fB}{\mathfrak{B}} 
+\newcommand{\bC}{\mathbb{C}}    \newcommand{\calC}{\mathcal{C}}     \newcommand{\fC}{\mathfrak{C}} 
+\newcommand{\bD}{\mathbb{D}}    \newcommand{\calD}{\mathcal{D}}     \newcommand{\fD}{\mathfrak{D}} 
+\newcommand{\bE}{\mathbb{E}}    \newcommand{\calE}{\mathcal{E}}     \newcommand{\fE}{\mathfrak{E}} 
+\newcommand{\bF}{\mathbb{F}}    \newcommand{\calF}{\mathcal{F}}     \newcommand{\fF}{\mathfrak{F}} 
+\newcommand{\bG}{\mathbb{G}}    \newcommand{\calG}{\mathcal{G}}     \newcommand{\fG}{\mathfrak{G}} 
+\newcommand{\bH}{\mathbb{H}}    \newcommand{\calH}{\mathcal{H}}     \newcommand{\fH}{\mathfrak{H}} 
+\newcommand{\bI}{\mathbb{I}}    \newcommand{\calI}{\mathcal{I}}     \newcommand{\fI}{\mathfrak{I}} 
+\newcommand{\bJ}{\mathbb{J}}    \newcommand{\calJ}{\mathcal{J}}     \newcommand{\fJ}{\mathfrak{J}} 
+\newcommand{\bK}{\mathbb{K}}    \newcommand{\calK}{\mathcal{K}}     \newcommand{\fK}{\mathfrak{K}}  
+\newcommand{\bL}{\mathbb{L}}    \newcommand{\calL}{\mathcal{L}}     \newcommand{\fL}{\mathfrak{L}} 
+\newcommand{\bM}{\mathbb{M}}    \newcommand{\calM}{\mathcal{M}}     \newcommand{\fM}{\mathfrak{M}} 
+\newcommand{\bN}{\mathbb{N}}    \newcommand{\calN}{\mathcal{N}}     \newcommand{\fN}{\mathfrak{N}}  
+\newcommand{\bO}{\mathbb{O}}    \newcommand{\calO}{\mathcal{O}}     \newcommand{\fO}{\mathfrak{O}} 
+\newcommand{\bP}{\mathbb{P}}    \newcommand{\calP}{\mathcal{P}}     \newcommand{\fP}{\mathfrak{P}} 
+\newcommand{\bQ}{\mathbb{Q}}    \newcommand{\calQ}{\mathcal{Q}}     \newcommand{\fQ}{\mathfrak{Q}} 
+\newcommand{\bR}{\mathbb{R}}    \newcommand{\calR}{\mathcal{R}}     \newcommand{\fR}{\mathfrak{R}} 
+\newcommand{\bS}{\mathbb{S}}    \newcommand{\calS}{\mathcal{S}}     \newcommand{\fS}{\mathfrak{S}}     
+\newcommand{\bT}{\mathbb{T}}    \newcommand{\calT}{\mathcal{T}}     \newcommand{\fT}{\mathfrak{T}} 
+\newcommand{\bU}{\mathbb{U}}    \newcommand{\calU}{\mathcal{U}}     \newcommand{\fU}{\mathfrak{U}} 
+\newcommand{\bV}{\mathbb{V}}    \newcommand{\calV}{\mathcal{V}}     \newcommand{\fV}{\mathfrak{V}} 
+\newcommand{\bW}{\mathbb{W}}    \newcommand{\calW}{\mathcal{W}}     \newcommand{\fW}{\mathfrak{W}} 
+\newcommand{\bX}{\mathbb{X}}    \newcommand{\calX}{\mathcal{X}}     \newcommand{\fX}{\mathfrak{X}} 
+\newcommand{\bY}{\mathbb{Y}}    \newcommand{\calY}{\mathcal{Y}}     \newcommand{\fY}{\mathfrak{Y}} 
+\newcommand{\bZ}{\mathbb{Z}}    \newcommand{\calZ}{\mathcal{Z}}     \newcommand{\fZ}{\mathfrak{Z}} 
+
+%Math-specific notations 
+
+\newcommand{\ep}{\epsilon}                                          %epsilon
+\newcommand{\vep}{\varepsilon}                                      %variable epsilon
+
+
+%-------------------------------------------------------------------
+
+
+%Common Operations 
+
+%sets 
+\renewcommand{\Cap}{\bigcap}                                        %A intersect with B 
+\newcommand{\card}{\text{card }}                                    %cardinality of a set
+\renewcommand{\Cup}{\bigcup}                                        %A union with B 
+\newcommand{\cut}{\backslash}                                       %A \ B 
+\newcommand{\es}{\approx}                                           %equinumerosity between two sets 
+\newcommand{\nes}{\not\approx}                                      %not Equinumerosity 
+\newcommand{\siq}{\subseteq}                                        %A is contained in B 
+\newcommand{\soq}{\supseteq}                                        %A is out of range of B 
+\newcommand{\symd}{\Delta}                                          %symmetric difference 
+
+%functions and function-related operations 
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}                           %smallest integer no less than #1 
+\newcommand{\dist}[2]{\text{dist}\left ({#1},{#2} \right )}         %Distance function 
+\newcommand{\floor}[1]{\lfloor {#1} \rfloor}                        %largest integer no greater than #1 
+\newcommand{\inv}[1]{{#1}^{-1}}                                     %the inverse of a function, a number or a group element
+\renewcommand{\mod}[1]{\,(\text{mod } {#1})}                        %modular of an integer #1 
+\newcommand{\ran}{\text{ran }}                                      %the range of a function
+\newcommand{\inflim}[1]{\varliminf_{#1}}                            %limit infimum of sequence or set
+\newcommand{\limc}[2]{\lim_{#1 \to #2}}                             %limit 
+\newcommand{\suplim}[1]{\varlimsup_{#1}}                            %limit supremum of sequence or set
+
+%Others
+\newcommand{\larrow}{\leftarrow}                                    %single left arrow, implies
+\newcommand{\rarrow}{\rightarrow}                                   %single right arrow, implies 
+\newcommand{\Larrow}{\Leftarrow}                                    %double left arrow, implies 
+\newcommand{\Rarrow}{\Rightarrow}                                   %double right arrow, implies 
+\newcommand{\lrarrow}{\leftrightarrow}                              %single left-right arrow 
+\newcommand{\LRarrow}{\Leftrightarrow}                              %double left-right arrow, shorter than \iff 
+\newcommand{\lowBrace}[2]{\underset{#1}{\underbrace{#2}}}           %under-brace with notes 
+\renewcommand{\(}{\left (}                                          %left-half bracket, turn off code checker before using it 
+\renewcommand{\)}{\right )}                                         %right-half bracket, turn off code checker before using it 
+\newcommand{\<}{\langle}                                            %left-half angular bracket 
+\renewcommand{\>}{\rangle}                                          %right-half angular bracket
+
+
+%-------------------------------------------------------------------
+
+
+%Patches  
+
+%Analysis and Calculus 
+\newcommand{\df}[2]{\frac{d{#1}}{d{#2}}}                            %one-variable differential operator
+%\newcommand{\indf}[2]{\dfrac{d{#1}}{d{#2}}}                         %differential operator for in-line math mode
+\newcommand{\im}{\text{Im }}                                        %taking the imaginary part of a number or a function 
+\newcommand{\inrPdct}[2]{\left \langle{#1},{#2}\right \rangle}      %inner product 
+\newcommand{\nDf}[2]{{#1}^{({#2})}}                                 %n-th derivative of some function 
+\newcommand{\norm}[1]{\left \|#1\right \|}                                       %norm 
+\newcommand{\parf}[2]{\frac{\partial{#1}}{\partial{#2}}}            %partial derivative of a function 
+\newcommand{\parfwide}[2]{\partial{#1} / \partial{#2}}              %partial derivative of a function, wide form 
+\newcommand{\re}{\text{Re }}                                        %taking the real part of a number or a function 
+
+%Combinatorics 
+\newcommand{\al}{{\aleph}_{0}}                                      %Aleph zero 
+\newcommand{\all}{{\aleph}_{1}}                                     %Aleph one
+\newcommand{\dbinomial}[2]{\begin{pmatrix}\!\!
+                           \begin{pmatrix}{#1}\\{#2} 
+                           \end{pmatrix}
+                           \!\!\!
+                           \end{pmatrix}}                           %double binomial 
+\newcommand{\kpermu}[2]{{#1}^\text{\underline{#2}}}                 %k-permutation 
+\newcommand{\logs}{\log^{*}}                                        %Iterated Logarithm 
+\newcommand{\stirling}[2]{\left \{\begin{aligned} 
+                                    {#1} \\ {#2} 
+                                  \end{aligned} 
+                          \right \}}                                %Stirling numbers of second kind 
+
+%Graph Theory 
+\newcommand{\comp}[1]{\text{comp} \left({#1}\right)}                %Component of graph 
+\newcommand{\conj}{\overline}                                       %Complement graph of a given graph
+
+%intersection of a collection of sets indexed by I 
+\newcommand{\AI}{\cap_{i \in I} A_i} 
+\newcommand{\BI}{\cap_{i \in I} B_i} 
+\newcommand{\CI}{\cap_{i \in I} C_i} 
+\newcommand{\DI}{\cap_{i \in I} D_i} 
+\newcommand{\EI}{\cap_{i \in I} E_i} 
+\newcommand{\FI}{\cap_{i \in I} F_i} 
+\newcommand{\GI}{\cap_{i \in I} G_i} 
+\newcommand{\HI}{\cap_{i \in I} H_i} 
+\newcommand{\II}{\cap_{i \in I} I_i} 
+\newcommand{\JI}{\cap_{i \in I} J_i} 
+\newcommand{\KI}{\cap_{i \in I} K_i} 
+\newcommand{\LI}{\cap_{i \in I} L_i} 
+\newcommand{\MI}{\cap_{i \in I} M_i} 
+\newcommand{\NI}{\cap_{i \in I} N_i} 
+\newcommand{\OI}{\cap_{i \in I} O_i} 
+\newcommand{\PI}{\cap_{i \in I} P_i} 
+\newcommand{\QI}{\cap_{i \in I} Q_i} 
+\newcommand{\RI}{\cap_{i \in I} R_i} 
+%\renewcommand{\SI}{\cap_{i \in I} S_i}                             %\SI already defined, delete '%' if you want to renew it 
+\newcommand{\TI}{\cap_{i \in I} T_i} 
+\newcommand{\UI}{\cap_{i \in I} U_i} 
+\newcommand{\VI}{\cap_{i \in I} V_i} 
+\newcommand{\WI}{\cap_{i \in I} W_i} 
+\newcommand{\XI}{\cap_{i \in I} X_i} 
+\newcommand{\YI}{\cap_{i \in I} Y_i}
+\newcommand{\ZI}{\cap_{i \in I} Z_i}                                
+
+%limit as "letter" tends to infinity 
+\newcommand{\limftya}{\lim_{a \to \infty}}                          
+\newcommand{\limftyb}{\lim_{b \to \infty}} 
+\newcommand{\limftyc}{\lim_{c \to \infty}} 
+\newcommand{\limftyd}{\lim_{d \to \infty}} 
+\newcommand{\limftye}{\lim_{e \to \infty}} 
+\newcommand{\limftyf}{\lim_{f \to \infty}} 
+\newcommand{\limftyg}{\lim_{g \to \infty}} 
+\newcommand{\limftyh}{\lim_{h \to \infty}}
+\newcommand{\limftyi}{\lim_{i \to \infty}}                          
+\newcommand{\limftyj}{\lim_{j \to \infty}}                          
+\newcommand{\limftyk}{\lim_{k \to \infty}}
+\newcommand{\limftyl}{\lim_{l \to \infty}}
+\newcommand{\limftym}{\lim_{m \to \infty}}
+\newcommand{\limftyn}{\lim_{n \to \infty}}                          
+\newcommand{\limftyo}{\lim_{o \to \infty}} 
+\newcommand{\limftyp}{\lim_{p \to \infty}} 
+\newcommand{\limftyq}{\lim_{q \to \infty}}
+\newcommand{\limftyr}{\lim_{r \to \infty}}
+\newcommand{\limftys}{\lim_{s \to \infty}}
+\newcommand{\limftyt}{\lim_{t \to \infty}}
+\newcommand{\limftyu}{\lim_{u \to \infty}}
+\newcommand{\limftyv}{\lim_{v \to \infty}}
+\newcommand{\limftyw}{\lim_{w \to \infty}} 
+\newcommand{\limftyx}{\lim_{x \to \infty}}                          
+\newcommand{\limftyy}{\lim_{y \to \infty}}                          
+\newcommand{\limftyz}{\lim_{z \to \infty}} 
+
+%matrices 
+\newcommand{\colTwo}[2]{\begin{pmatrix}
+                        #1 \\ #2 
+                        \end{pmatrix}}                              %length-two column vector 
+\newcommand{\colThree}[3]{\begin{pmatrix}
+                        #1 \\ #2 \\ #3
+                        \end{pmatrix}}                              %length-three column vector 
+\newcommand{\colFour}[4]{\begin{pmatrix}
+                        #1 \\ #2 \\ #3 \\ #4 
+                        \end{pmatrix}}                              %length-four column vector 
+\newcommand{\colFive}[5]{\begin{pmatrix}
+                        #1 \\ #2 \\ #3 \\ #4 \\ #5
+                        \end{pmatrix}}                              %length-five column vector 
+\newcommand{\diagTwo}[2]{\begin{pmatrix} 
+                         #1 &\, \\ 
+                         \, &#2 \\ 
+                         \end{pmatrix}}                             %two-by-two diagonal matrix 
+\newcommand{\diagThree}[3]{\begin{pmatrix} 
+                           #1 &\, &\, \\ 
+                           \, &#2 &\, \\ 
+                           \, &\, &#3 \\ 
+                           \end{pmatrix}}                           %three-by-three diagonal matrix 
+\newcommand{\diagFour}[4]{\begin{pmatrix} 
+                           #1 &\, &\, &\, \\ 
+                           \, &#2 &\, &\, \\ 
+                           \, &\, &#3 &\, \\ 
+                           \, &\, &\, &#4 \\ 
+                           \end{pmatrix}}                           %four-by-four diagonal matrix }
+\newcommand{\maTwo}[4]{\begin{pmatrix} 
+                        #1 &#2 \\  
+                        #3 &#4 \\ 
+                       \end{pmatrix}}                               %two-by-two matrix
+\newcommand{\maTwoThree}[6]{\begin{pmatrix} 
+                            #1 &#2 &#3 \\ 
+                            #4 &#5 &#6 \\ 
+                            \end{pmatrix}}                          %two-by-three matrix
+\newcommand{\maThreeTwo}[6]{\begin{pmatrix}
+                            #1 &#2 \\ 
+                            #3 &#4 \\ 
+                            #5 &#6 \\ 
+                            \end{pmatrix}}                          %three by two matrix 
+\newcommand{\maThree}[9]{\begin{pmatrix}
+                         #1 &#2 &#3 \\ 
+                         #4 &#5 &#6 \\ 
+                         #7 &#8 &#9 \\ 
+                         \end{pmatrix}}                             %three by three matrix
+
+%determinants 
+\newcommand{\deTwo}[4]{\det \begin{pmatrix}
+                            #1 &#2 \\ 
+                            #3 &#4 \\ 
+                            \end{pmatrix}}                          %determinant of two by two matrix 
+\newcommand{\deThree}[9]{\det \begin{pmatrix}
+                              #1 &#2 &#3 \\ 
+                              #4 &#5 &#6 \\ 
+                              #7 &#8 &#9 \\ 
+                              \end{pmatrix}}                        %determinant of three by three matrix 
+
+%span 
+\renewcommand{\span}{\text{span }}                                  %the linear span of a set
+\newcommand{\spans}[1]{\text{span} \{#1\}}                          %the linear span of elements 
+
+%Topology
+\newcommand{\hBall}[2]{B_{#1}\left(#2\right)}                   %B_#1 (#2): open ball centered at #2 with radius #1 

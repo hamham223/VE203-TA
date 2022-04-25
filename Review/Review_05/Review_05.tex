@@ -1,0 +1,417 @@
+\documentclass{beamer}
+\newcommand{\myfont}{\rmfamily\normalsize\upshape\mdseries}
+\newcommand{\degree}{^\circ}
+\title{\sffamily Review V(Slides 280 - 311)}
+\subtitle{\textbf{Homormophism \& Coset }\\Hold on! This is difficult!}
+\institute[UM-SJTU JI]{University of Michigan-Shanghai Jiao Tong University Joint Institute}
+\author{HamHam}
+\usepackage{graphicx}
+\usepackage{picinpar}
+\usepackage{indentfirst}
+\usepackage{chemformula}
+\usepackage{geometry}
+\usepackage{subfigure}
+\usepackage{appendix}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{multicol,multirow,multido}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{textpos}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{upgreek}
+\usepackage{JI_MathCourse_Notations}
+\usepackage{mathrsfs}
+\usepackage[OT2,OT1]{fontenc}
+%\input{../../List_of_Notation/JI_MathCourse_Notations.sty}
+
+%\usepackage{ctex} %插入中文
+%\ctexset{today=old}
+
+\newcommand{\mydef}[1]{\sffamily\blue{#1}\myfont\\} %for define
+\newcommand{\mysol}{\yellow{Solution:}\\}
+\usetheme[dove]{Boadilla}
+\usecolortheme{dolphin}
+\useoutertheme{miniframes}
+\begin{document}
+    \usebackgroundtemplate{\tikz\node[opacity=0.25]{
+    \includegraphics[width=\paperwidth,
+    height=\paperheight]{hamster.jpg}
+    };}
+\begin{titlepage}
+    \begin{center}
+        VE203 - Discrete Mathmatics 
+    \end{center}
+\end{titlepage}
+\myfont
+\section{Symmetric Group}
+\begin{frame}
+    \frametitle{Symmetric Group}
+    \mydef{Definition}
+    \hh Given $n \in \mathbb{N} \backslash \{0\}$, we have the following symmetric group of degree $n$,
+    $$
+    \begin{aligned}
+    S_{n} &=\{\text {All permutations on } n \text { letters/numbers}\} \\
+    &=\operatorname{Sym}\{1,2,3, \ldots, n\} \\
+    &=\{f:[n] \rightarrow[n] \mid f \text { bijective}\}
+    \end{aligned}
+    $$
+
+    Note that it is a finite group of order $n!$ (the number of bijections from $[n]$ to $[n]$), 
+    \textit{i.e.}, $|S_n| = n!$.
+    \\
+    \vv 
+    \begin{itemize}
+        \item  A subgroup of $S_n$ is called a \blue{permutation group}.
+        \item A permutation of the form $(ab)$ where $a \neq b$ 
+        is called a \blue{transposition}. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Permutation}
+    \hh A permutation that can be expressed as a product of an \textbf{even/odd number 
+    of transpositions} is called an even/odd permutation. \\
+    \hh The set of even permutations in $S_n$ forms 
+    a subgroup of $S_n$, denoted as $A_n$, 
+    is called the alternating group of degree $n$. \\\vv
+
+    \yellow{Permutation $\to$ transportation:} $(132)(5648)=(13)(32)(56)(64)(48)$ (not unique, but only can be either all odd or all even).
+	\\\vs{0.3em}
+	\yellow{Inverse of permutation:} $\sigma=(132)(5648) \ \Rightarrow \ \sigma^{-1}=(8465)(231)$ 
+    (Separate permutations to be \textbf{\red{disjoint}} first. Since $\sigma(a_i) = a_j$ implies $\sigma^{-1}(a_j) = a_i$, we only need to reverse the order of the cyclic pattern).
+	\\\vs{0.3em}
+	\yellow{Composition:} $(12)(245)(13)(125) = (14532).$ \\
+    (Apply the \textbf{\red{right}} permutation first. Demo!).
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    1. True or false:
+    \begin{itemize}
+        \item Can an abelian group have a non-abelian subgroup?
+        \item Can a non-abelian group have an abelian subgroup?
+        \item Can a non-abelian group have a non-abelian subgroup?
+    \end{itemize}
+    \vs{3em}
+    \yellow{Answer: No; Yes; Yes.}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+        2. Prove the following:
+        \begin{enumerate}
+            \item $S_n$ is non-abelian for $n\geq 3$;~\\
+            \item $A_n$ is a subgroup of $S_n$;~\\
+            \item $|A_n|=n!/2.$~\\
+        \end{enumerate}
+\end{frame}
+
+\section{Homomorphism}
+\begin{frame}
+    \frametitle{Homomorphism}
+    \hh  Given groups $\red{G},\blue{G\,'}$, a homomorphism is a map $f : \red{G} \to \blue{G\,'}$ such that for
+		$$f\(x\red{\cdot} y\)=f\(x\) \blue{\cdot} f\(y\)$$
+    We have:
+    \begin{itemize}
+        \item $f\(a_1\cdots a_k \)=f\(a_1\)\cdots f\(a_k\)$
+        \item $f\,(1_G)=1_{G\,'}$
+        \item $f\(a^{-1}\)=f^{\,-1}\(a\)$
+    \end{itemize}
+    \mydef{Compare and Contrast}
+    \hh Recall the concept of \blue{structure preserving}
+    \begin{equation*}
+        \begin{aligned}
+            &~y \xrightarrow{~~~f~~~}f\(y\) \\
+            x\, \cdot &\downarrow      ~~~~~~~~~\downarrow f\(x\)\cdot \\
+            x\,\cdot &y\xleftarrow{~~f^{\,-1}~~}f\(x\cdot y\) 
+        \end{aligned}        
+    \end{equation*}
+\end{frame}
+\begin{frame}
+    \frametitle{Image \& Kernel}
+    \hh The \blue{image} of a homomorphism $f : G \to G\,'$, often denoted by $\operatorname{im} f$, or $f\(G\)$, is simply the image of as a map of sets:
+    $$
+    \operatorname{im} f=\left\{x \in G\,^{\prime} \mid x=f\(a\) \text { for some } a \in G\right\}.
+    $$
+    \\ \hh The \blue{kernel} of $f$ , denoted by $\operatorname{ker}f$, is the set of elements of $G$ that are	mapped to the identity in $G\,'$:
+    $$
+    \operatorname{ker} f=\left\{a \in G \mid f\(a\)=1_{G\,^{\prime}}\right\}.
+    $$
+    \mydef{Comapre and Contrast}
+    \hh Let $U, V$ be real or complex vector spaces and $L \in \mathscr{L}\(U,V\,\)$, 
+    then we define the range and kernel of $L$ by:
+    \begin{equation*}
+        \begin{aligned}
+            \ran L&:=\{v\in V :\underset{u\in U}{\exists}~ v=Lu\}\\
+            \text{ker } L&:=\{u\in U : Lu=0\}
+        \end{aligned}
+    \end{equation*} 
+\end{frame}
+\begin{frame}
+    \frametitle{Properties}
+    \hh Let $f : G \to G\,'$ be a group homomorphism, and let $a, b \in G$. 
+    Let $K$ = $\ker f$. The following are equivalent:
+		\begin{enumerate}
+			\item $f\(a\)=f\(b\)$
+			\item $a^{-1} b \in K$
+			\item $b \in a K$
+			\item $a K=b K$
+		\end{enumerate}
+    \vv
+    \red{!} A homomorphism $f : G \to G\,'$ is injective 
+    if\mbox{f} $\ker f = \{1_G\}$.\\
+    \red{!} Isomorphism $G \cong G\,'$ $~~\LRarrow~~$ $f$ is \textbf{bijective}. \\
+    \red{!} How to check if a \textbf{homomorphism} is an \textbf{isomorphism}:
+    \begin{center}
+        verify $\ker f= \{1_G\}$ (injection) and $\operatorname{im} f = G\,'$ (bijection)
+    \end{center}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    3. Prove: Let a homomorphism $f:G \to G\,'$. 
+    If $H$ is a subgroup of $G$, then $f\(H\)^{-1}$ is a subgroup of $G\, '$.
+    %\pause 
+    \\\vs{3em}
+    \yellow{Solution:}\\
+    \par Let $x,y, a \in H$.
+    \begin{enumerate}
+    	\item Closure: $f(x)^{-1} f(y)^{-1} =  f\,(x^{-1})f\,(y^{-1}) = f\(x^{-1}y^{-1}\) = f\((yx)^{-1}\) = f(yx)^{-1}.$
+    	\item Identity: $1_G \in H, 1_{G\,'} = f\(1_{G}\) \in f(H)^{-1}$.
+    	\item Inverse: $f(a)^{-1} = f\(a^{-1}\) \in f(H)^{-1}$. 
+    \end{enumerate}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    4. Let $(G,\cdot)$ be a group. Let $g,h \in G$ both have
+    order $n$, prove that  $\<g\>\cong\<h\>$.
+    \pause
+    \\\vs{2em}
+    \yellow{Solution:}\\
+    \hh Define $f: \<g\> \to \<h\>$ by $f\,(g)=h$ and for all $0\leq k \leq n, f\(g^k\)=f\,(g)^k$.
+    So, $f$ is a well-defined function, and, by definition, $f$ preserves the group
+    product. It is clear that the function $f$ sends $1_G \mapsto 1_G$, $g \mapsto h$, $\dots$, $g^{n-1}\mapsto h^{n-1}$,
+    and so $f$ is a bijection.
+    \\\vv
+    (Directly taken from Zach's slides)
+\end{frame}
+\section{Cosets}
+\begin{frame}
+    \frametitle{\red{Cosets}}
+    \fbox{
+    \parbox{0.95\textwidth}{
+		\hh Given a group $G$, if $H$ is a subgroup of $G$ and $a \in G$, the notation $aH$ will stand for the set of all products $ah$ with $h \in H$,
+		$$
+		a H=\{g \in G \mid g=ah \text { for some } h \in H\}
+		$$
+		This set is called a \textbf{left coset} of $H$ in $G$.	
+	}}
+    \\\vv
+    \fbox{
+    \parbox{0.95\textwidth}{
+    \hh The number of left cosets of a subgroup is called the index of $H$ in $G$. The index is denoted by $[G : H\,]$ (can be infinite, why?).
+    \par \hh  All left cosets $aH$ of a subgroup $H$ of a group $G$ have the same order.
+    }
+    }
+    \begin{itemize}
+        \item[-] \blue{Counting formula:} $|G| = |H| \cdot [G:H\,]$.
+        \item[-] \blue{Lagrange's Theorem:} Let $H$ be a subgroup of a finite group $G$. 
+        The order of $H$ divides the order of $G$.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    5. Verify Lagrange's Theorem for the subgroup 
+    $H = \{0, 3\}$ of $\mathbb{Z}_6$ .
+    \pause
+    \\\vs{2em}
+    \mysol
+    The cosets are
+    $$0 + H = \{0, 3\}, \quad 1 + H = \{1, 4\}, \quad 2 + H = \{2, 5\}.$$
+    
+    Notice there are 3 cosets, each containing 2 elements, 
+    and that the cosets form a \textbf{partition} of the group.
+\end{frame}
+\begin{frame}
+    \frametitle{An important consequence of Lagrange's Theorem}
+    \mydef{Theorem}
+    \hh Let $(G,\cdot)$ be a group and let $g \in G$ have order $n$. 
+    If there exists $m,k \in \bN\cut\{0\}$ with $n = mk$,
+    then the order of $g^m$ is $k$. \\ \vs{0.3em}
+    \mydef{Proof.}
+    \hh Let $m,k \in \bN\cut\{0\}$ with n = mk. 
+    Now, $(g^m)^k=g^{mk}=g^n=1_G=$. If $0<q<k$ is 
+    such that $(g^m)^q=1_G$, then $g^{mq}=1_G$. But 
+    $mq<mk=n$, 
+    which is a contradiction.\\ \vs{0.3em}
+    \mydef{Theorem}
+    \hh If $(G,\cdot)$ is a finite group with order $n$, 
+    then for all $g \in G, g^n = 1_G$.\\ \vs{0.3em}
+    \mydef{Proof.}
+    \hh Let $(G,\cdot)$ be a finite group with order $n$. 
+    Let $g \in G$. We know that the order of $g$ must be finite, 
+    so let $k$ be the order of $g$. Now, $k$ must divide $n$,
+    so the exists $m \in N$ such that $n = mk$. So 
+    $g^n=g^{mk}=(g^k)^m$ $=1_G ^ m=1_G$.
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    6. Prove that for any subgroup $H \leq G$, the
+    (left) cosets of $H$ partition the group $G$.
+    \\\vs{3em}
+    \yellow{Hint:}\\
+    \hh We need to show that the union of the left cosets is the whole group, and that
+    different cosets do not overlap.
+\end{frame}
+\begin{frame}
+    \frametitle{\red{Normal Subgroup}}
+    \fbox{
+	\parbox{0.95\textwidth}{
+		\hh Given group $G$, and $a, g \in G$, the element $gag^{-1} \in G$ is called the
+		conjugate of a by $g$.
+		\par \hh A subgroup $N$ of $G$ is a normal subgroup,
+        denoted by $N \unlhd G$, if for all $a \in N$ and $g \in G$, 
+        $gag^{-1} \in N$. 
+	}}
+    \\\vs{1em}
+    \blue{Properties:} 
+    \begin{itemize}
+        \item $f : G \to G\,'$ a homomorphism, then $\ker f \trianglelefteq G$.
+        \item Every subgroup of an abelian group is normal.
+        \item The \blue{center} is always a normal subgroup.
+        \item $gH=Hg$ for all $g\in G$ if\mbox{f} $H \trianglelefteq G $. 
+        \item $A_n\trianglelefteq S_n$.
+    \end{itemize}
+    \red{\textbf{Try your best! Remember them!}}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    \red{Important result:}\\
+    \vv
+    7. Show that any subgroup of index 2 in a group
+    is a normal subgroup.\\
+    \vv\pause
+    \mysol
+    \hh Denote the subgroup as $H$. Obviously, the left cosets of a subgroup of index 2 are
+    $1_H H= H$ and $aH$, where $a \not\in H$; (\red{why?}) the right 
+    cosets are $H 1_H=H$ and $Ha$. Since the cosets form a 
+    partition of the origin group, and $1_H H = H 1_H =H $, so 
+    the remaining is another coset, namely $aH=Ha$. (\blue{left=right}) 
+    So $H$ is normal.
+    \\\vs{2em}
+    \cha{University of zhihu: \url{https://zhuanlan.zhihu.com/p/163548084}}\\
+\end{frame}
+\section{*Extra Topic}
+\begin{frame}
+    \frametitle{Distribution of Primes (Part I)}
+    \mydef{Proposition}
+    \hh Let $K$ be any positive integer larger than $2$, then 
+    there exists two adjacent primes $p$ and $p'$ $(p'<p)$, such that
+    $p-p'\geq K$. 
+    \\\vs{2em}
+    \mydef{Proof:}
+    \hh Let $K!+2=M$, then $2 \mid M, 2+1 \mid M+1, \cdots , K \mid M+K-2$. Since 
+    $M>2$, we conclude that $M, M+1,\cdots,M+K-2$ are all composite. Let $p'$ be the 
+    largest prime that is smaller than $M$, but the next prime $p$ is denifitely larger than $M+K-2$, namely 
+    $$p-p'\geq (M+K-1)-(M-1)=K.$$
+\end{frame}
+\begin{frame}
+    \frametitle{Distribution of Primes (Part I)}
+    \mydef{Definition}
+    \hh We denote $\pi(x)$ as the number of primes no larger than
+    $x$. Namely
+    $$\pi(x)=\sum_{p\leq x} 1.$$ 
+    We already know that as $x\to \infty$, $\pi(x)\to \infty$. But
+    how fast it grows? 
+    \\ \hh Here, we're going to prove that $\pi(x) = \Theta (x/\ln x)$.
+    Namely, there exists two positive numbers $A_1$ and $A_2$, such that
+    $$A_1 \frac{x}{\ln x}< \pi(x)<A_2 \frac{x}{\ln x} ~~(x\geq 2)$$ 
+    This is so called 
+    {\fontencoding{OT2}\selectfont \red{Qebyxev}} (Chebyshev) inequality in number theory.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Distribution of Primes (Part I)}
+    Before prove the above inequality, we need to prove the following two lemmas.
+    \\\vv
+    \mydef{Lemma 1}
+    \hh Let $n$ be any positive integer, set
+    $$N=\frac{(2n)!}{\(n!\)^2}$$  
+    then 
+    $$\(\pi(2n)-\pi(n)\)\ln n \leq \ln N \leq \pi(2n) \ln(2n).$$
+\end{frame}
+\renewcommand{\[}{\left[}
+\renewcommand{\]}{\right]}
+\begin{frame}
+    \frametitle{Proof of Lemma 1}
+    Let 
+    $$N = \prod_{p\leq 2n}p^\alpha_p$$
+    to be the standard decomposition of $N$, we have
+    $$
+        \alpha_p = \sum_{r=1}^\infty \left[\frac{2n}{p^r}\right]
+        -2 \sum_{r=1}^\infty \[\frac{n}{p^r}\] =
+        \sum_{r=1}^{\[\frac{\ln(2n)}{\ln p}\]}
+        \(\[\frac{2n}{p^r}\]-2\[\frac{n}{p^r}\]\),
+    $$
+    (this is because when $r > \floor{\ln(2n)/\ln(p)}$, $p^r > 2n > n$). Obviously,
+    $$
+        \alpha_p \leq \sum_{r=1}^{\[\frac{\ln(2n)}{\ln p}\]} 1
+        = \[ \frac{\ln(2n)}{\ln p}\]\leq \frac{\ln(2n)}{\ln p}.
+    $$
+\end{frame}
+\begin{frame}
+    \frametitle{Proof (Cont.)}
+    Therefore
+    $$
+        \ln N = \sum_{p\leq 2n} 
+        \alpha_p \ln p \leq 
+        \sum_{p\leq 2n} \ln (2n) =
+        \pi(2n)\ln(2n).
+    $$
+    On the other hand, if $n< p \leq 2n$, then $p \mid (2n)!, \(p,\(n!\)^2\)=1$,
+    so $p \mid N$. We have 
+    $$ N \geq \prod_{n<p\leq 2n} p.$$
+    Take logrithm on both side,
+    $$
+        \ln N \geq \sum_{n<p\leq 2n} \ln p > \ln n \sum_{n<p\leq 2n} 1 = 
+        \(\pi(2n)-\pi(n)\)\ln n,
+    $$
+    this complete our proof.
+\end{frame}
+\begin{frame}
+    \frametitle{Esitimation of $\ln N$}
+    Now it's time to esitimate how large $\ln N$ is.\\\vv
+    \mydef{Lemma 2}
+    \hh For the same $n, N $ defined in Lemma 1, we have
+    $$
+        n \ln 2 \leq \ln N \leq 2n \ln 2.
+    $$
+    \mydef{Proof:}
+    \hh Considering that $N$ is the coefficient of term $x^n$
+    when expanding $(1+x)^{2n}$, so 
+    $$ N\leq (1+1)^{2n} = 2^{2n}$$
+    On the other hand,
+    $$ N = \frac{2n(2n-1)\cdots(n+1)}{n!}=2\(2+\frac{1}{n-1}\)\cdots 
+    (2+\frac{n-1}{1})\geq 2^n.
+    $$
+\end{frame}
+\begin{frame}
+    \frametitle{Reference}
+    \begin{itemize}
+        \item Examples From Zach's Slides (P196)
+        \item Exercises from 2021-Fall-Ve203 TA Zhao Jiayuan
+        \item Yan Shijian, etc. \textit{Basic Number Theory},
+        fourth edition. Beijing: Higher Education Press, 2020.5 print.
+    \end{itemize}
+\end{frame}
+\end{document}

@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Symmetric Group}{1}{0}{1}
+\beamer@sectionintoc {2}{Homomorphism}{6}{0}{2}
+\beamer@sectionintoc {3}{Cosets}{12}{0}{3}
+\beamer@sectionintoc {4}{*Extra Topic}{20}{0}{4}
