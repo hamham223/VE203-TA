@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Propositional Logic}{1}{0}{1}
+\beamer@sectionintoc {2}{Induction}{6}{0}{2}
+\beamer@sectionintoc {3}{Addictive Groups}{10}{0}{3}
+\beamer@sectionintoc {4}{Cyclic Groups}{14}{0}{4}
+\beamer@sectionintoc {5}{Homomorphism}{19}{0}{5}
+\beamer@sectionintoc {6}{End}{27}{0}{6}
