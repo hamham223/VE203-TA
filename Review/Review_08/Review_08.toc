@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Asymptotic Notation}{1}{0}{1}
+\beamer@sectionintoc {2}{Graph Theory}{5}{0}{2}
+\beamer@sectionintoc {3}{Conectivity}{9}{0}{3}
+\beamer@sectionintoc {4}{Bipartation \& Matching}{16}{0}{4}
+\beamer@sectionintoc {5}{Algorithms}{19}{0}{5}
+\beamer@sectionintoc {6}{*Extra Topic}{22}{0}{6}
