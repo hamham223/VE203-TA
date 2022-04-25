@@ -1,0 +1,581 @@
+\documentclass{beamer}
+\newcommand{\myfont}{\rmfamily\normalsize\upshape\mdseries}
+\newcommand{\degree}{^\circ}
+\title{\sffamily Review VI(Slides 312 - 351)}
+\subtitle{\textbf{Modular Arithmetic}\\}
+\institute[UM-SJTU JI]{University of Michigan-Shanghai Jiao Tong University Joint Institute}
+\author{HamHam}
+\usepackage{graphicx}
+\usepackage{picinpar}
+\usepackage{indentfirst}
+\usepackage{chemformula}
+\usepackage{geometry}
+\usepackage{subfigure}
+\usepackage{appendix}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{multicol,multirow,multido}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{textpos}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{upgreek}
+\usepackage{JI_MathCourse_Notations}
+\usepackage{mathrsfs}
+\usepackage[OT2,OT1]{fontenc}
+%\input{../../List_of_Notation/JI_MathCourse_Notations.sty}
+
+%\usepackage{ctex} %插入中文
+%\ctexset{today=old}
+
+\newcommand{\mydef}[1]{\sffamily\blue{#1}\myfont\\} %for define
+\newcommand{\mysol}{\yellow{Solution:}\\}
+\usetheme[dove]{Boadilla}
+\usecolortheme{dolphin}
+\useoutertheme{miniframes}
+\begin{document}
+    \usebackgroundtemplate{\tikz\node[opacity=0.25]{
+    \includegraphics[width=\paperwidth,
+    height=\paperheight]{hamster.jpg}
+    };}
+\begin{titlepage}
+    \begin{center}
+        VE203 - Discrete Mathmatics 
+    \end{center}
+\end{titlepage}
+\myfont
+\newcommand{\green}[1]{\textcolor[rgb]{0.3,0.6,0}{#1}}
+\section{Modular Arithmetic}
+\begin{frame}
+    \frametitle{Modular Arithmetic}
+    \mydef{Definition}
+    \hh For $a,b\in \bZ$, and $m\in\bN\cut\{0\}$
+    we say that $a$ 
+    \textbf{\textit{\green{ is congruent to $b$ modulo $m$}}}, 
+    writing 
+    $$
+        a \equiv b \mod{m}~~~~ \text{if\mbox{f}}~~~~ 
+        m \mid (a-b)
+    $$
+    The followings are equivalent:
+    \begin{itemize}
+        \item $a \equiv b \mod{m}$
+        \item $\underset{k\in\bZ}{\exists}\, a=b+km$
+        \item $a \operatorname{mod} m = b \operatorname{mod} m$
+    \end{itemize}
+    \par \hh 
+    For any $n \in \bZ$
+    $\equiv$ is an equivalence relation on $\bZ$. 
+    We call such equivalence classes 
+    \textbf{congruence classes}, denoted as 
+    $a := [a]_\equiv$ for $a \in \bZ$. The set of congruence classes is 
+    denoted as $\bZ/n\bZ$ in consistence with the notation in group theory.
+\end{frame}
+\begin{frame}
+    \frametitle{Modular Arithmetic}
+    \hh Under a given modulo, the congruence map $a \to \bar{a}$ preserves the
+    arithmetic of integers, that is
+    \begin{itemize}
+        \item $\conj{a+b}=\conj{a}+\conj{b}$
+        \item $\conj{ab}=\conj{a}\cdot\conj{b}$
+    \end{itemize}
+    Or you may prefer to write:
+    \begin{itemize}
+        \item $a+b \equiv (a \operatorname{mod} m + b \operatorname{mod} m) \mod{m}$
+        \item $a\cdot b \equiv (a \operatorname{mod} m)\cdot ( b \operatorname{mod} m) \mod{m}$
+    \end{itemize}
+    Thus the following two are groups:
+    \begin{itemize}
+        \item $\(\bZ/n\bZ,+\)$
+        \item $\(\{a\in \bZ/n\bZ : \gcd(a,n=1)\},\times\)$  
+        (Sometimes $\(\bZ/n\bZ,\times\)$ or $\(\bZ/n\bZ\)^\times$ for short)
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    1. Prove that $41\mid 2^{20} -1$.
+    \pause
+    \\\vs{2em}
+    \mysol
+    \hh This is equivalent to showing that
+    $$2^{20}-1 \equiv 0 \mod{41}.$$
+    We note that $2^5=32\equiv -9 \mod{41}$. Then
+    $$2^{20}=(2^5)^4\equiv (-9)^4 \mod{41}$$
+    But $(-9)^4=81\cdot 81$ and $81\equiv -1 \mod{41}$. So 
+    $$2^{20} \equiv (-1)^2\equiv 1 \mod{41}$$
+\end{frame}
+\begin{frame}
+    \frametitle{Division in Modular Arithmetic}
+    \hh We have seen the addition and multiplication in 
+    modular arithemetic, what about division?\\\vv
+    \mydef{Theorem}
+    \hh Let $a,b,c \in \bZ$ and $m \in \bN \cut \{0\}$. Then 
+    $$
+        ac \equiv bc \mod{m} ~~~~\Rarrow~~~~ a\equiv b \mod {m/d}
+    $$
+    where $d=\gcd(c,m)$.
+    \\\vv 
+    \mydef {Proof}
+    \hh There exist integers $r,s$ with $\gcd(r,s) = 1$ such that 
+    $c = rd, m = sd$. Insert them to the equation $ac - bc=k\cdot m$.
+\end{frame}
+\begin{frame}
+    \frametitle{Modular Inverse}
+    \mydef{Definition}
+    \hh Let $a\in\bZ$ and $m \in \bN \cut \{ 0,1\}$ be given
+    . Then an integer $a^{-1} \in \bZ $ such that 
+    $$a a^{-1} \equiv 1 \mod {m}.$$
+    s said to be an \green{inverse of $a$ modulo $m$}.
+    \\\vs{0.5em}
+    \mydef{Theorem} 
+    \hh  Let $a \in \bN \cut \{0\}$ and $m \in \bN \cut \{ 0,1\}$. 
+    If gcd(a, m) = 1, an inverse of $a$ modulo $m$ exists. 
+    This inverse is unique modulo $m$.
+    \\ \vs{0.5em}
+    \mydef{Proof}
+    \begin{itemize}
+        \item Existence: Bézout's Theorem 
+        \item Uniqueness: Prove by contradiction
+    \end{itemize}
+    \begin{block}{How to find the inverse}
+        \hh Solve $7x\equiv 1 \mod{31}$ $\LRarrow$ Solve $7\cdot x-t\cdot 31=1$
+    \end{block}
+\end{frame}
+\section{Arithmetic Function}
+\begin{frame}
+    \frametitle{Arithmetic Function}
+    \mydef{Definition}
+    \hh \textbf{Arithmetic function}, any mathematical function defined for integers (sometimes positive integers only)
+    and dependent upon those \red{properties of the integer itself as a number}, 
+    in contrast to functions that are defined for other \red{values} 
+    (real numbers, complex numbers, etc.) 
+    and that involve various operations from algebra and calculus.
+    \\\vs{0.5em}
+    \mydef{Example}
+    \begin{itemize}
+        \item Euler's Totient Function $\varphi(n)$
+        \item $\pi(x)$, number of primes no larger than $x$
+        \item $\tau(a)$, number of positive factors of $a$
+        \item $\sigma(a)$, sum of all positive factors of $a$
+        \item Mobius Function 
+            $\mu(a)=
+                \begin{cases}
+                    1,~~~~~~a=1,\\
+                    (-1)^r,\text{product of $r$ different primes}\\
+                    0,~~~~~~\text{divisible by a prime square}
+                \end{cases} 
+            $ 
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Multiplicative Function}
+    \mydef{Definition}
+    \hh A function $f : \bN \cut \{0\} \to \bN\{0\}$ is multiplicative 
+    if $f \(1\) = 1$ and
+    $f \(m_1m_2\) = f \(m_1\)f \(m_2\)$ for $\gcd(m_1,m_2) = 1$.
+    \begin{block}{Exercise}
+        Check whether the followings are multiplicative functions:
+        \begin{itemize}
+            \item $f(n)=n^c$, where $c$ is an arbitrary constant.
+            \item $f(n)=[\text{For any integer } k>1, k^2\nmid n]$.
+            \item $f(n)=c^k$, where $k$ is the number of primes that divides $n$.
+            \item The product of any two multiplicative functions.
+        \end{itemize}
+    \end{block}
+    \yellow{Answer: True;~~False;~~True;~~True.}
+    \\\vs{0.5em}
+    \red{\textit{Comment.} This does appear in the slides!}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exercise}
+    2. Let $f\(x\)$ be a multiplicative function, and the 
+    standard decomposition for $a$ is $a=p_1^{\alpha_1} 
+    p_2^{\alpha_2}\cdots p_k^{\alpha_k}$, 
+    then 
+    \begin{equation*}
+        \begin{aligned}
+            \sum_{d\mid a} f\(d\) &= \prod_{i=1}^k
+            \(1+f\(p_i\)+f\(p_i^2\)+\cdots+f\(p_i^{\alpha_i}\)\)\\
+            & = \prod_{i=1}^k \,\sum_{j=0}^{\alpha_i} f\(p_i^j\)
+        \end{aligned}
+    \end{equation*}
+    \textit{Comment.} It is easy to see that, $f\(1\)$ must be $1$. 
+\end{frame}
+\begin{frame}
+    \frametitle{Proof}
+        \hh All the positive factor of $a$ is 
+        $$ 
+            p_1 ^ {\beta_1} p_2 ^ {\beta_2}\cdots p_k ^ {\beta_k},
+            \beta_i = 0,1,2,\cdots,\alpha_i,i=1,2,\cdots,k
+        $$
+        So that 
+        \begin{equation*}
+            \begin{aligned}
+                \sum_{d\mid a} f\(d\) 
+                &= \sum_{\beta_1=0}^{\alpha_1} \sum_{\beta_2=0}^{\alpha_2} 
+                \cdots \sum_{\beta_k=0}^{\alpha_k} 
+                f\(p_1 ^ {\beta_1} p_2 ^ {\beta_2}\cdots p_k ^ {\beta_k}\)\\
+                &= \sum_{\beta_1=0}^{\alpha_1} \sum_{\beta_2=0}^{\alpha_2} 
+                \cdots \sum_{\beta_k=0}^{\alpha_k} 
+                f\(p_1 ^ {\beta_1}\) f\(p_2 ^ {\beta_2}\) \cdots 
+                f\(p_k ^ {\beta_k}\)\\
+                &= \prod_{i=1}^k
+                \(f\(p_i^0\)+f\(p_i\)+f\(p_i^2\)+\cdots+f\(p_i^{\alpha_i}\)\)
+            \end{aligned}
+        \end{equation*}
+\end{frame}
+\begin{frame}
+    \frametitle{Euler's Totient Function}
+    \mydef{Definition}
+    \hh The \blue{Euler's Totient Function}
+     counts the number of positive integers less than $n$ 
+     and relatively prime to $n$, i.e.
+     $$ \varphi(n)= |\{k\in\bN \mid \gcd(k,n)=1,1\leq k\leq n\}| = |\(\bZ/n\bZ\)^*| $$
+    \green{Properties:}
+    \begin{itemize}
+        \item $\varphi(p)=p-1$
+        \item $\varphi(p^k)=p^k-p^{k-1} (k\geq 1)$
+        \item $\varphi(mn)=\varphi(m)\cdot \varphi(n)$, if $\gcd(m,n)=1$
+        \item $\varphi(n)=\sum_{d\mid n} \varphi(d)$
+        \item $\varphi(a)=\varphi\(\prod_{i=1}^k p_i^{\alpha_i}\) = \prod_{i=1}^k (p_i-1)p_i^{\alpha_i-1}$
+        \item $\varphi(a)=a\(1-\frac{1}{p_1}\)\(1-\frac{1}{p_2}\)\cdots\(1-\frac{1}{p_k}\)$
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    \red{This is challenging!}\\\vv
+    3. Let $S_{p,q}=\{f: \bZ/p\bZ \to \bZ/q\bZ\mid
+    f \text{ is a group homomorphism}\}$. Given 
+    $p,q$ primes, $p<q $, then 
+    \begin{itemize}
+        \item[(A)] $f\(1\)=1$ if $f \in S_{p,q}$
+        \item[(B)] $f$ is an isomorphism if $f \in S_{p,q}$
+        \item[(C)] $|S_{p,q}|\leq |S_{q,p}|$
+        \item[(D)] $|S_{p,q}| = \varphi(q)^{\varphi(p)}$  
+    \end{itemize}
+    \vv
+    \yellow{Answer: C}
+\end{frame}
+\section{The. \& App.}
+\begin{frame}
+    \frametitle{Euler's Theorem}
+    \mydef{Theorem (Euler)}
+    \hh For $m \in \bN \cut \{0\}$ and $a \in \bZ$ such that $\gcd(a, m) = 1$,
+    $$a ^ {\varphi(m)}\equiv 1 \mod{m}$$
+    \\\vs{0.5em}
+    \mydef{Proof}
+    \hh Let $G=\(\bZ/m\bZ\)^*$, then $\forall a \in G$, $a^{|G|}=1_G$.
+    \\\vs{0.5em}
+    \green{Remark}\\
+    \hh When $m\in \bP$, this becomes \blue{Fermat's Little Theorem}.
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    4. Given $a, n \in \bN$ and $a, n > 1$, show that 
+    $n \mid \varphi(a^n - 1)$.\\ \vv
+    \pause 
+    \yellow{Solution 1:}\\
+    \hh Let $m=a^n-1$, consider the multiplicative group 
+    $G = \(\bZ/m\bZ\)^\times$. 
+    \\ \hh 
+        First we prove the order of $a$ is $n$.
+        Indeed, $a^n\equiv 1\mod{m}$ and 
+        $a^x \not \equiv 1 \mod{m}$ for $1<x<m$
+        since $1<a^x<a^n=m$.
+    \\ \hh 
+        According to Lagrange's theorem, therefore 
+    the order of a divides the order of $G$, 
+    that is, $n \mid \varphi(a^n - 1)$.
+    \\ \vv
+    \yellow{Solution 2:}\\
+    \hh 
+    \begin{equation*}
+        \left.
+        \begin{aligned}
+            m=a^n-1 \Rarrow a^n    &\equiv 1 \mod{m}\\
+            \text{Euler} \Rarrow a^{\varphi(m)}&\equiv 1 \mod{m} 
+        \end{aligned}
+        \right\}
+        \Rarrow n \mid \varphi(m) \text{\red{~(why?)}}
+    \end{equation*}
+\end{frame}
+\begin{frame}
+    \frametitle{Fermat's Little Theorem}
+    \mydef{Theorem}
+    \hh Given $a \in \bZ$ and $p \in \bP$, 
+    such that $(a, p) = 1$, then
+    \begin{equation*}
+        \begin{aligned}
+            a^{p-1}&\equiv 1\mod{p}\\
+            a^p    &\equiv a\mod{p}
+        \end{aligned}
+    \end{equation*}
+    \mydef{Proof}
+    \hh Induction on $a$.\\\vs{0.5em}
+    \mydef{Fermat Primality Test}
+    \begin{itemize}
+        \item If $2^n\not\equiv 2 \mod{n}$, then n is \red{NOT} prime.
+        \item If $2^n\equiv 2\mod{n}$, then n is \red{PROBABLY} prime.
+    \end{itemize}
+    \begin{block}{Fast Exponentiation}
+        \hh Express power in binary and play with your CASIO 991CN.
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Another Proof}
+    \hh Here is another proof of \blue{Fermat's Little Theorem}. \\ 
+    \hh Consider the set 
+        $S=\{a,2a,\cdots, (p-1)a\}$. 
+    For any $ma,na$ in S, there doesn't exist 
+        $ma\equiv na \mod{p}$. \red{(Why?)} Therefore
+        $$ 
+            S\textrm{ mod }p=
+            \{0\leqslant k\leqslant p-1|ma\equiv k (\textrm{mod }p), 
+            ma\in S\}=\{1,2,\cdots ,p-1\}
+        $$
+    Then,
+        $$a\cdot 2a \cdots (p-1)a\equiv (p-1)! (\textrm{mod }p)$$
+    which implies 
+        $$a^{p-1}(p-1)!\equiv (p-1)! \mod{p}$$ 
+    Since $\gcd\((p-1)!, p\)=1$, we conclude $a^{p-1}\equiv 1\mod{p}$.
+    \begin{block}{Exercise}
+        \hh Prove \blue{Euler's Theorem} by considering  
+        $$S=\{ka|\textrm{gcd}(k,n)=1, 1\leqslant k\leqslant n\}$$
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Wilson's Theorem}
+    \mydef{Theorem (Wilson)}
+    \hh Let $p \in \bN $ be prime. Then 
+        $$ (p-1)! \equiv -1 \mod{p}.$$
+    \\ \vv 
+    \mydef{Proof:}
+    \hh \red{Key idea: find the inverse and match in pair.} \\
+    \vv
+    \hh The inverse $a^{-1}$ modulo $p$ of $a$ exists and is unique
+    modulo $p$,
+    $$a^{-1} a\equiv 1 \mod{p}$$
+    
+\end{frame}
+\begin{frame}
+    \frametitle{Proof}
+     We first show that $a = a^{-1}$
+    if and only if $a = 1$ or $a = p - 1$. 
+    \par \vv
+    It is easily checked that
+    $$
+        1 \cdot 1 \equiv 1 \quad\mod{p} \quad \text { and } \quad(p-1)^{2} \equiv 1 \quad\mod{p}
+    $$
+    Now suppose that $a^{2} \equiv 1(\bmod p)$. Then
+    $$
+        (a-1)(a+1) \equiv 0 \quad\mod{p}
+    $$
+    Since $p$ is prime, this implies $a-1 \equiv 0$ or $a+1 \equiv 0\mod{p}$. 
+    Hence, either $a=1$ or $a=p-1$.
+\end{frame}
+\begin{frame}
+    \frametitle{Proof (Cont.)}
+    Next, consider the remaining $p-3$ integers
+    $$
+        2,3, \ldots, p-2
+    $$
+    Since the inverse $a^{-1}$ of $a$ is unique, 
+    it follows that these numbers can be grouped 
+    into pairs $a, a^{-1}$ where $a^{-1} \neq a$ and $a^{-1} a \equiv 1\mod{p}$.
+    Therefore,
+    $$
+        (p-2) !=2 \cdot 3 \cdots(p-2) \equiv 1 \quad\mod{p}
+    $$
+    Multiplying by $p-1$,
+    $$
+        (p-1) ! \equiv p-1 \equiv-1 \quad\mod{p}
+    $$
+    which is what we wanted to show.
+\end{frame}
+\begin{frame}
+    \frametitle{Chinese Remainder Theorem}
+    This is from Xue Runze.\\
+    \mydef{Lemma}
+    \hh For $\operatorname{gcd}(m, n)=1$, we have
+    $\(\bZ / m n \mathbb{Z}\) \cong \(\mathbb{Z} / m \mathbb{Z}\) \times \(\mathbb{Z} / n \mathbb{Z}\)$
+    \\\vv
+    \mydef{Theorem (Chinese Remainder Theorem)}
+    \hh For $\operatorname{gcd}\left(m_{i}, m_{j}\right)=1$ for all $i \neq j$, we have
+    $$
+        \mathbb{Z} /\left(\prod_{i=1}^{n} m_{i}\right) \mathbb{Z} \cong \prod_{i=1}^{n} \mathbb{Z} / m_{i} \mathbb{Z}
+    $$
+    and
+    $$
+        \left(\mathbb{Z} /\left(\prod_{i=1}^{n} m_{i}\right) \mathbb{Z}\right)^{\times} \cong \prod_{i=1}^{n}\left(\mathbb{Z} / m_{i} \mathbb{Z}\right)^{\times}
+    $$
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    \green{It's better to do an exercise and make
+    friends with CASIO 991CN.}\\ \vv
+    5. Solve the following system of 
+    \blue{linear Diophantine equations},
+    $$ 
+        x \equiv 3 \mod{8}, \quad 
+        x \equiv 1 \mod{15}, \quad 
+        x \equiv 11 \mod{20} 
+    $$
+   
+    \textit{Comment.} Please note that $\{m_i\}^r_{i=1}$
+    should be  \textbf{pairwise coprime} before 
+    you apply the formula.
+    \begin{block}{Recipe}
+        $$
+            x \equiv \sum_{i=1}^r a_i y_i \mod{m}
+        $$
+        where $m=\prod_{i=1}^{r} m_{i} \text { and } 
+        y_{i}=\left(m / m_{i}\right)^{\varphi\left(m_{i}\right)}
+         \equiv \delta_{i j} \mod{m_j}$.
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{RSA Cryptography}
+    For your better preparation for the exam, we here omit the technical details 
+    and gives the operation steps only.\\\vv
+    \begin{itemize}
+        \item The \textbf{public key} to be published is a pair of positive integers 
+        $(n:=p q, E)$ where $p, q \in \mathbb{P}$ and 
+        $p \neq q$, and $E<\varphi(n)$, $\operatorname{gcd}(E, \varphi(n))$.
+        \item The \textbf{encryption function} is
+        $$
+        y=e(x):=x^{E} \quad \mod{n}
+        $$
+        \item The private key $D:=E^{-1} \bmod \varphi(n)$. 
+        The \textbf{decryption function} is therefore
+        $$
+        d(y):=y^{D}=x^{E D}=x \quad\mod{n}
+        $$
+        \item Be careful and play with CASIO 991CN.
+    \end{itemize}
+\end{frame}
+\section{*Extra Topic}
+\begin{frame}
+    \frametitle{Distribution of Primes (Part II)}
+    Last time we proved two lemmas:\\
+    \mydef{Lemma 1}
+    \hh Let $n$ be any positive integer, set
+    $$N=\frac{(2n)!}{\(n!\)^2}$$  
+    then 
+    $$\(\pi(2n)-\pi(n)\)\ln n \leq \ln N \leq \pi(2n) \ln(2n).$$
+    \mydef{Lemma 2}
+    \hh For the same $n, N $ defined in Lemma 1, we have
+    $$
+        n \ln 2 \leq \ln N \leq 2n \ln 2.
+    $$
+\end{frame}
+\begin{frame}
+    \frametitle{Distribution of Primes (Part II)}
+    Now, it's time to prove the inequality.\\
+    \vv
+    \mydef{Proposition}
+    \hh Let $x\geq 2$, then
+    $$ 0.2 \frac{x}{\ln x} \leq \pi(x) \leq 5 \frac{x}{\ln x}$$
+    \mydef{Proof: (Left)}
+    \hh If $x\geq 6$, let $n= \floor{x/2}$, then $x\geq 2n, n > x/3$. 
+    From Lemma 1,2 we immediately obtain that 
+    $$
+        \pi(x)\ln x\geq \pi (2n)\ln(2n) \geq 
+        \ln N \geq n \ln 2 > \frac{\ln 2 }{3}\cdot x > 0.2x
+    $$
+    Considering that the maximum of $x/\ln x$ on the interval 
+    $[2,6]$ is $6/\ln 6$, so when $2\leq x \leq 6$,
+    $$
+        0.2 \frac{x}{\ln x}\leq 0.2 \frac{6}{\ln 6} <1
+        = \pi(2) \leq \pi(x).
+    $$
+\end{frame}
+\begin{frame}
+    \frametitle{Proof (Right)}
+    \hh From Lemma 1,2, we know
+    $$
+        \(\pi(2n)-\pi(n)\)\ln (n) \leq \ln N \leq 2n \ln2.
+    $$
+    Plug in $n=2^r$,
+    $$ r \(\pi\(2^{r+1}\)-\pi\(2^r\)\) \leq 2^{r+1}.$$
+    Since $\pi (2^{r+1})\leq 2^r$,
+    $$
+        (r+1)\pi\(2^{r+1}\)-r\pi\(2^r\) \leq 2^{r+1} + 
+        \pi\(2^{r+1}\) \leq 3 \cdot 2^r
+    $$
+    \hh For any positive integer $m$, let $r=0,1,\cdots,m-1$, we can
+    obtain $m$ inequalities.
+\end{frame}
+%\renewcommand{\[}{\left[}
+%\renewcommand{\]}{\right]}
+\begin{frame}
+    \frametitle{Proof (Right)}
+    \hh Add the above $m$ inequalities together,
+    $$
+        m \pi\(2^m\) \leq 3 (1+2+\cdots +2 ^{m-1}) < 3 \times 2^m.
+    $$
+    When $x\geq 2$, there exists a unique positive integer $m$
+    , such that $2^{m-1} \leq x < 2 ^ m$, so $1/m < \ln 2 /\ln x$. We get 
+    $$
+        \pi(x) \leq \pi\(2 ^ m\) \leq \frac{1}{m}\cdot 3 \cdot 2^m\leq 
+        6\ln 2 \cdot \frac{x}{\ln x }\leq 5 \frac{x}{\ln x}
+    $$
+    This complete out proof.\\
+    \vv
+    \mydef{Corollary}
+    \hh Almost all the numbers are composite, namely 
+    $$
+        \underset{x\to \infty}{\lim} \frac{\pi(x)}{x} =0.
+    $$
+\end{frame}
+\begin{frame}
+    \frametitle{More Result}
+    \mydef{Theorem}
+    \hh A more advanced result, the \blue{prime number theorem}
+    $$
+        \underset{x\to \infty}{\lim} \frac{\pi(x)}{\frac{x}{\ln x}}=1.
+    $$
+    \mydef{The Best result so far}
+    Let 
+    $$
+        li(x):=\int_2^x \frac{\mathrm{d}t}{\ln t}
+    $$
+    Then 
+    $$
+        |\pi(x) - li(x)| \leq B x e^ {-A \(\ln x \) 3/5\times (\ln \ln x)-3/5}
+    $$
+    \mydef{A Guess}
+    $$
+        |\pi(x)-li(x)| \leq B x^ {\frac{1}{2}+\varepsilon}
+    $$
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    6. Let $p_n$ be the n-th prime. Prove that: there exists two 
+    positive numbers $B_1, B_2$, such that 
+    $$ B_a n \ln n \leq p_n \leq B_2 n \ln n$$
+\end{frame}
+\begin{frame}
+    \frametitle{Reference}
+    \begin{itemize}
+        \item Example From Horst's Slides FA2021.
+        \item Exercises from 2021-Fall-Ve203 Mid\_2 Exam.
+        \item Exercises from 2019-Fall-Ve203 TA Yan Xinyu.
+        \item Contents from 2021-Fall Mid\_2\_RC by Xue Runze.
+        \item Yan Shijian, etc. \textit{Basic Number Theory},
+        fourth edition. Beijing: Higher Education Press, 2020.5 print.
+    \end{itemize}
+\end{frame}
+\end{document}

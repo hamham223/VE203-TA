@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Modular Arithmetic}{1}{0}{1}
+\beamer@sectionintoc {2}{Arithmetic Function}{8}{0}{2}
+\beamer@sectionintoc {3}{The. \& App.}{14}{0}{3}
+\beamer@sectionintoc {4}{*Extra Topic}{25}{0}{4}
