@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Partial Order}{1}{0}{1}
+\beamer@sectionintoc {2}{Cardinality}{11}{0}{2}
+\beamer@sectionintoc {3}{Leftovers}{16}{0}{3}
+\beamer@sectionintoc {4}{*Extra Topic}{18}{0}{4}
