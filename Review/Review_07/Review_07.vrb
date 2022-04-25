@@ -1,0 +1,24 @@
+\frametitle{Sample Code}
+    \hbox{
+    \begin{lstlisting}
+    #include <iostream>
+    using namespace std;
+    inline int max(int a,int b){return a>b?a:b;}
+    int main(){
+        int t,m,w,c;
+        cin >> t >> m;
+        int f[1001]={0};
+        for (int i = 0; i < m; i++){
+            cin >> w >> c;
+            for (int j = t; j >= w; j--){
+                f[j]=max(f[j-w]+c,f[j]);
+            }
+        }
+        int max_value=0;
+        for (int i = 0; i <= t; i++){
+            max_value=max(max_value,f[i]);
+        }
+        cout << max_value;
+        return 0;
+    }\end{lstlisting}
+    }

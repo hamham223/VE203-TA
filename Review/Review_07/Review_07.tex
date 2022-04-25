@@ -1,0 +1,596 @@
+\documentclass{beamer}
+\newcommand{\myfont}{\rmfamily\normalsize\upshape\mdseries}
+\newcommand{\degree}{^\circ}
+\title{\sffamily Review VII(Slides 353 - 416)}
+\subtitle{\textbf{Counting! Counting!}\\Counting something is never easy}
+\institute[UM-SJTU JI]{University of Michigan-Shanghai Jiao Tong University Joint Institute}
+\author{HamHam}
+\usepackage{graphicx}
+\usepackage{picinpar}
+\usepackage{indentfirst}
+\usepackage{chemformula}
+\usepackage{geometry}
+\usepackage{subfigure}
+\usepackage{appendix}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{multicol,multirow,multido}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{textpos}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{upgreek}
+\usepackage{JI_MathCourse_Notations}
+\usepackage{mathrsfs}
+
+
+%\usepackage{ctex} %插入中文
+%\ctexset{today=old}
+\newcommand{\sweat}[1]{\includegraphics[width={#1}\textwidth]{sweat.png}}
+\newcommand{\mydef}[1]{\sffamily\blue{#1}\myfont\\} %for define
+\newcommand{\mysol}{\yellow{Solution:}\\}
+\usetheme[dove]{Boadilla}
+\usecolortheme{dolphin}
+\useoutertheme{miniframes}
+\begin{document}
+    \usebackgroundtemplate{\tikz\node[opacity=0.25]{
+    \includegraphics[width=\paperwidth,
+    height=\paperheight]{hamster.jpg}
+    };}
+\begin{titlepage}
+    \begin{center}
+        VE203 - Discrete Mathmatics 
+    \end{center}
+\end{titlepage}
+\myfont
+\newcommand{\binomial}[2]{\begin{pmatrix} {#1}\\{#2}	\end{pmatrix}}
+\newcommand{\green}[1]{\textcolor[rgb]{0.3,0.6,0}{#1}}
+\section{Binomial Coef\mbox{f}icients}
+\begin{frame}
+    \frametitle{Twelvefold Way (will be provided)} %(This table will be provided in your final exam paper):
+    Distribute $k$ balls into $n$ urns ($f : B \to U$, $|B| = k$, $|U| = n$).
+    \begin{table}[H]
+        \centering
+        \resizebox{10.5cm}{!}{
+        \begin{tabular}{ccccc}
+            \hline
+            \begin{tabular}[c]{@{}c@{}}Balls \\ (domain)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Urns\\ (codomain)\end{tabular} & \begin{tabular}[c]{@{}c@{}}unrestricted\\ (any function)\end{tabular} & \begin{tabular}[c]{@{}c@{}}$\leq 1$\\ (injective)\end{tabular} & \begin{tabular}[c]{@{}c@{}}$\geq 1$\\ (surjective)\end{tabular} \\ \hline
+             & & & & \\
+            labeled & labeled & $n^k$ & $n^{\underline{k}}$ & $n!\left\{\!\!\!\begin{array}{l} k \\ n\end{array}\!\!\!\right\}$ \\ 
+             & & & & \\
+            unlabeled & labeled & $\begin{pmatrix}\!\!\begin{pmatrix}	n\\k \end{pmatrix}\!\!\!\end{pmatrix}$ & $\begin{pmatrix} n\\k	\end{pmatrix}$ & $\begin{pmatrix}\!\!\begin{pmatrix}	n\\k-n \end{pmatrix}\!\!\!\end{pmatrix}$ \\ 
+             & & & & \\
+            labeled & unlabeled & $\sum\limits_{i=1}^{n} \left\{\!\!\!\begin{array}{l} k \\ i\end{array}\!\!\!\right\}$ & $\blue{[k \leqslant n]}$ & $\left\{\!\!\!\begin{array}{l} k \\ n\end{array}\!\!\!\right\}$ \\
+             & & & & \\
+            unlabeled & unlabeled & $\sum\limits_{i=1}^{n} p_i (k)$ & \blue{$[k \leqslant n]$} & $p_n (k)$\\ 
+             & & & & \\ \hline
+        \end{tabular}
+        }
+    \end{table}
+\end{frame}
+\begin{frame}
+    \frametitle{A few names...}
+    Notations in \red{red} are suggested.
+    \begin{itemize}
+        \item Permutation: $\red{n^{\underline{k}} = P(n,k)} = P_k^n = \underbrace{n \cdot (n-1) \cdot (n-2) \cdots(n-k+1)}_{k \text { terms }} = \dfrac{n !}{(n-k) !}$, \phantom{Permutation: } ($A_n^k$ in middle school, $n \geqslant k$) \\
+		\item Combination: $\red{\begin{pmatrix} n\\k	\end{pmatrix} = C(n,k)} = C_k^n = \dfrac{n !}{k!\, (n-k) !}$, ($n \geqslant k$) 
+		\item Multichoosing: $\begin{pmatrix}\!\!\begin{pmatrix}	n\\k \end{pmatrix}\!\!\!\end{pmatrix} = \red{\begin{pmatrix} n+k-1\\k	\end{pmatrix}}$
+        ~~($n<k$ is possible!)
+        \item Circular permutation: $\dfrac{P(n,k)}{k!}$
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Basic Properties}
+    \begin{itemize}
+        \item $\begin{pmatrix} n\\k	\end{pmatrix} = \begin{pmatrix} n\\n-k	\end{pmatrix} = \dfrac{n}{k} \begin{pmatrix} n-1\\k-1 \end{pmatrix}$
+        \item $\begin{pmatrix} n\\0	\end{pmatrix} = \begin{pmatrix} n\\n	\end{pmatrix} = 1$, $\begin{pmatrix} n\\1	\end{pmatrix} = n$
+        \item \red{$\begin{pmatrix} n\\k	\end{pmatrix} = \begin{pmatrix} n-1\\k-1	\end{pmatrix} + \begin{pmatrix} n-1\\k	\end{pmatrix}$}
+        \item $(x+y)^{n} = \sum\limits_{k=0}^{n}\begin{pmatrix} n\\k	\end{pmatrix} x^{k} y^{n-k}$, (binomial theorem)
+            \begin{itemize}
+                \item Commonly used form: $(x+1)^{n} = \sum\limits_{k=0}^{n}\begin{pmatrix} n\\k	\end{pmatrix} x^{k}$
+                \item Application: $\sum\limits_{k=0}^{n}\begin{pmatrix} n\\k	\end{pmatrix} = 2^n$, $\sum\limits_{k=0}^{n} (-1)^k \begin{pmatrix} n\\k	\end{pmatrix} = 0$
+            \end{itemize}
+        \item \red{$\stirling{n}{k}=\stirling{n-1}{k-1}+k \left\{\!\!\!\begin{array}{c} n-1 \\ k\end{array}\!\!\!\right\}$}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    1.  Prove the following equations:
+    \begin{enumerate}
+        \item $$\sum\limits_{k=0}^{n} k \begin{pmatrix} n\\k	\end{pmatrix} = n\cdot 2^{n-1}$$
+        \item $$\sum\limits_{k=0}^{n} k^2 \begin{pmatrix} n\\k	\end{pmatrix} = n(n+1)\cdot 2^{n-2}$$
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exercise}
+    \green{We can have something related to modular arithmetic!}
+    \\\vv
+    2. If $p$ is a prime, prove the following:
+    \begin{itemize}
+        \item $\binomial{n}{p}\equiv\floor{\frac{n}{p}}\mod{p}$
+        \item $\binomial{p}{k}\equiv0\mod{p}$, for $1\leq k\leq p-1$
+        \item $\binomial{p-1}{k}\equiv(-1)^k \mod{p}$, for $0\leq k\leq p-1$
+        \item $\binomial{p+1}{k}\equiv 0\mod{p}$, for $2\leq k\leq p-1$
+    \end{itemize}
+\end{frame}
+\section{Multichoosing}
+\begin{frame}
+    \frametitle{Multichoosing}
+    \mydef{Definition}\vs{0.3em}
+    \fbox{
+	\parbox{0.95\textwidth}{
+		\par \green{Multiset}: Let $S$ be a multiset, $$S = \{ n_1*a_1, n_2*a_2, \cdots, n_k*a_k \} , \ n = n_1 + n_2 + \cdots + n_k,$$
+		which means there are $n_1$ element $a_1$, $n_2$ element $a_2$, $\cdots$, $n_k$ element $a_k$. $n_i$ is multiplicity of $a_i \in S$.
+	}
+    }
+    \\\vs{0.5em}
+    \fbox{
+    \parbox{0.95\textwidth}{
+		\par \blue{Permutation in multiset:} 
+		\begin{itemize}
+			\item [-] $P(n,n) = \dfrac{n!}{n_1! n_2! \cdots n_k!}$
+			\par $\to$Proof: select by steps $$ P(n,n) = 
+            \begin{pmatrix} n\\n_1 \end{pmatrix}\begin{pmatrix} n-n_1\\n_2 \end{pmatrix} \cdots \begin{pmatrix} n-n_{1}-n_{2}-\cdots-n_{k-1} \\ n_k \end{pmatrix}.$$
+		\end{itemize}
+	} 
+}
+\end{frame}
+\begin{frame}
+    \frametitle{Multichoosing}
+    \centering
+    %\resizebox{!}{6cm}{
+    \fbox{
+        \parbox{0.95\textwidth}{
+		\par \blue{Combination in multiset:}
+		\begin{itemize}
+			\item [-] $\begin{pmatrix}\!\!\begin{pmatrix} k\\r \end{pmatrix}\!\!\!\end{pmatrix} = \begin{pmatrix} k+r-1\\r \end{pmatrix}$ if $r \leqslant \forall n_i$.
+			\par $\to$Proof:
+			\par The combination $\begin{pmatrix}\!\!\begin{pmatrix} k\\r \end{pmatrix}\!\!\!\end{pmatrix}$ equals to the number of solutions to the indefinite equation $$x_1 + x_2 + \cdots + x_k = r.$$
+			\par A solution corresponds to a permutation 
+			\begin{equation}
+			\label{eq.Pmulti}
+			\underbrace{1\cdots1}_{x_1 \text{ times}}0\underbrace{1\cdots1}_{x_2 \text{ times}}0\cdots0\underbrace{1\cdots1}_{x_k \text{ times}}.
+			\end{equation}
+			\textit{I.e.,} if $k-1$ 0s divide $r$ 1s into $k$, $x_i$ is the number per partition. 
+		\end{itemize}
+	    } 
+    }
+\end{frame}
+\begin{frame}
+    \frametitle{Properties}
+    \fbox{
+        \parbox{0.95\textwidth}{
+            \begin{itemize}
+                \item[-]  $\begin{pmatrix}\!\!\begin{pmatrix} k\\r \end{pmatrix}\!\!\!\end{pmatrix} = \begin{pmatrix}\!\!\begin{pmatrix} r+1\\k-1 \end{pmatrix}\!\!\!\end{pmatrix}$ 
+                \par $\to$Proof: number of ways to arrange $k-1$ 0s and $r$ 1s = number of ways to arrange $r$ 1s and $k-1$ 0s.
+                $$LHS = \begin{pmatrix}\!\!\begin{pmatrix} (k-1)+1\\r \end{pmatrix}\!\!\!\end{pmatrix} = \begin{pmatrix}\!\!\begin{pmatrix} r+1\\k-1 \end{pmatrix}\!\!\!\end{pmatrix} = RHS.$$           
+                \item [-] \blue{Multinomial formula:} 
+                    $$
+			        \left(a_{1}+\cdots+a_{m}\right)^{n}=
+                        \sum_{
+                            \substack{
+                                k_{1}, \ldots, k_{m} \geqslant 0 \\
+                                k_{1}+\cdots+k_{m}=n
+                            } 
+                        }
+                    \left(\begin{array}{c}
+			        n \\
+			        k_{1}, k_{2}, \ldots, k_{m}
+			              \end{array}\right) 
+                    a_{1}^{k_{1}} a_{2}^{k_{2}} \cdots a_{m}^{k_{m}}
+			        $$
+            \end{itemize}
+	    } 
+    }
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    \hh \green{Of course, we can have something more fancy. 
+    But...the exam actually prefers the exercise below} 
+    \sweat{0.03}
+    \sweat{0.03}
+    \sweat{0.03}\\\vv
+    3. Find the number of \textbf{non-negative} integers 
+    solutions of $$x_1+x_2+x_3+x_4=30,$$ 
+    such that $3 \leqslant x_i \leqslant 10$ 
+    for every $1 \leqslant i \leqslant 4$.\\ \vv
+    \pause 
+    \yellow{Answer:}\\
+    \begin{itemize}
+        \item $\dbinomial{5}{10}=\binomial{14}{10}=1001$.
+        \item $\(\binomial{14}{10}-
+        \(\binomial{12}{2}+\binomial{10}{2}+\cdots
+        +\binomial{2}{2}\)\)/2=420$.
+    \end{itemize}
+\end{frame}
+\section{Inclusion-Exclusion}
+\begin{frame}
+    \frametitle{Inclusion-Exclusion Principle}
+    \mydef{Notation}\vs{0.3em}
+    \fbox{
+	\parbox{0.95\textwidth}{
+		\hh Given $I \subset \{1, \cdots , n\}$, 
+        let 
+		$$
+		A_{I}=\bigcap_{i \in I} A_{i},
+		$$
+		where $A_i \subset X$ for all $i \in I$. 
+        \par \hh For example, $A_{\{1,2,4\}} = A_1 \cap A_2 \cap A_4$. In particular, $A_\varnothing = X$.
+    }}
+    \\\vs{0.3em}
+    \mydef{Theorem (Inclusion-Exclusion Principle)}
+    \fbox{
+    \parbox{0.95\textwidth}{
+        Let $A_1, \cdots, A_n$ be subsets of $X$. Then the number of elements of $X$ which lie in none of the subsets $A_i$ is $$
+		\sum_{I \subset\{1, \ldots, n\}}(-1)^{|I\,|}\left|A_{I}\right|.
+		$$
+    }
+    }
+\end{frame}
+\begin{frame}
+    \frametitle{Corollary}
+	\par Let $A_1, \cdots , A_n$ be a sequence of (not necessarily distinct) sets, then
+	$$
+	\left|A_{1} \cup A_{2} \cup \cdots \cup A_{n}\right|=
+    \sum_{\varnothing \neq I \subset\{1, \ldots, n\}}
+    (-1)^{|I\,|+1}\left|A_{I}\right|.
+	$$
+    \mydef{Special Case}
+    \hh When $|I\,|=|J\,|\Rarrow |A_I|=|A_J|$
+    $$
+	\left|A_{1} \cup A_{2} \cup \cdots \cup A_{n}\right|=
+    \sum_{|I\,|=1}
+    (-1)^{|I\,|+1}\binom{n}{\left|I\,\right|}\left|A_{I}\right|.
+	$$
+    \mydef{Derangement}
+    $$
+    d_{n}=\sum_{i=0}^{n}(-1)^{i}  \binom{n}{i}
+    (n-i) !=n ! \sum_{i=0}^{n} \frac{(-1)^{i}}{i !}
+    $$
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    4. Find the number of non-negative integers solutions of 
+    $$x_1+x_2+x_3+x_4=30$$ 
+    such that $3 \leqslant x_i \leqslant 10$ for every 
+    $1 \leqslant i \leqslant 4$.
+    \\ \vs{3em} \yellow{Answer:} 
+    $1330-1084=246$.
+\end{frame}
+\begin{frame}
+    \frametitle{Counting Surjections}
+    \fbox{
+	\parbox{0.95\textwidth}{
+		\par Let $k \geqslant n$. The number of surjections $f : \{1, \cdots, k\} \to \{1, \cdots , n\}$ is given	by$$
+		S_{k, n}=\sum_{i=0}^{n-1}(-1)^{i}\begin{pmatrix} n \\ i \end{pmatrix}(n-i)^{k} = n!\left\{\!\!\!\begin{array}{l} k \\ n\end{array}\!\!\!\right\}.
+		$$
+	}
+    }
+    \vs{0.5em}
+    \begin{block}{Exercise}
+    \hh   Which of the following identities are valid for $n=2021$?
+        \begin{itemize}
+            \item[\green{(A)}]$\sum_{k=0}^n \binom{n}{k} (n-k)^{n-2} (-1)^k = 0$
+            \item[(B)]$\sum_{k=0}^n \binom{n}{k} (n-k)^{n-1} (-1)^k = n!$
+            \item[(C)]$\sum_{k=0}^n \binom{n}{k} (n-k)^{n}   (-1)^k = (n+1)!$
+            \item[\green{(D)}]$\sum_{k=0}^n \binom{n}{k} (n-k)^{n+1} (-1)^k = n\cdot (n+1)! / 2$
+        \end{itemize}
+    \end{block}
+\end{frame}
+\section{Calculator Workshop}
+\begin{frame}{Matrix Chain Multiplication}
+    \red{This is the boring recipe...}
+    \begin{enumerate}
+        \item we shall create a 2-dimensional array for storing 
+        \blue{$m[i,j]$ costs needed to compute $A_{i \cdots j}$}. 
+        \item Remember that if we have only one matrix in a sequence, then there is nothing to multiply. 
+        It means that \blue{$m[i,j] = 0$, when $i = j$}.
+        \item However, when $i < j$, we split the sequence into $A_{i \cdots k}$ and $A_{k+1 \cdots j}$. 
+        Then the total cost for $A_{i \cdots j}$ will be based on the following recursive rule
+        \blue{(DP Equation)}:
+        $$
+        m[i, j]= \min\limits_{i \leqslant k<j}\left\{m[i, j]=m[i, k]+m[k+1, j]+p_{i-1} p_{k} p_{j}\right\}
+        $$
+        \item We \blue{cannot have $i > j$}, 
+        thus the part of the table below the main diagonal will be ignored.
+    \end{enumerate}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    \red{If this does occur in the exam, it would be like this one.}
+    \\ \vv
+    5. Find an optimal parenthesization of a matrix chain multiplication
+    whose sequence of dimension is $(20, 2, 30, 12, 8)$.
+    \\ \vv 
+    \yellow{Answer:} \\
+    \hh The optimal parenthesization is $A_1((A_2A_3)A_4)$.
+\end{frame}
+\begin{frame}
+    \frametitle{Linear Recurrence Relation}
+    \hh 
+    Forgive me that it is really difficult to 
+    summerize a \textbf{general recipe}. Let's 
+    just look at a concrete example. I think it 
+     contains almost everything.\\ \vv 
+    \green{Example}\\
+    \hh Find the general solution to the following inhomogeneous 
+    linear recurrence equation
+    \beq
+        a_{n+3}=8a_{n+2}-21a_{n+1}+18a_n+ 5^n + (n^2+1) 3^n 
+        \label{recurrence}
+    \eeq
+\end{frame}
+\begin{frame}
+    \frametitle{Solution}
+     Like solving differential equations,
+    the \green{general solution} is given by
+    $$a_n = a_n ^ {part} + a_n ^ {hom}$$
+    For the \green{homogeneous part} we establish the 
+    characteristic equation: 
+    $$A^3 = 8 A^2 - 21 A + 18 $$
+    Press CASIO or by factorization:
+    $$(A-2)\cdot (A-3)^2 =0$$
+    Hence, the homogeneous solution is given by:
+    $$a_n^{hom}= c_1 2^n + c_2 3^n + c_3 n \cdot 3^n$$
+\end{frame}
+\begin{frame}
+    \frametitle{Solution (Cont.)}
+    For the first \green{inhomogeneous part} $5^n$, it is easy to see
+    $$a_n^{part_1} = c_4 5^n$$
+    Plug in back to Eq. \ref{recurrence},  
+    $$c_4  = 8c_4  -21 c_4  +18 c_4  +1  
+    \Rarrow c_4 = -\frac{1}{4}$$
+    For the second \green{inhomogeneous part} $(n^2+1) 3^n$, 
+    the root $A=3$ has \red{multiplicity of 2} and $n^2+1$ is a 
+    polynomial of \textbf{degree of 2}, so:
+    $$a_n^{part_2} =(c_5 + c_6 n + c_7 n^2) \red{n^2} 3^n $$
+\end{frame}
+\newcommand{\glass}{\includegraphics[width=0.03\textwidth]{glass.png}}
+\newcommand{\thinking}{\includegraphics[width=0.03\textwidth]{thinking.png}}
+\newcommand{\confound}{\includegraphics[width=0.03\textwidth]{confound.png}}
+\newcommand{\sleep}{\includegraphics[width=0.03\textwidth]{sleep.png}}
+\newcommand{\bye}{\includegraphics[width=0.03\textwidth]{bye.png}}
+\begin{frame}
+    \frametitle{Solution (Cont.)}
+    Then combining all the terms,
+    $$a_n^{gen}= c_1 2^n + c_2 3^n + c_3 n \cdot 3^n 
+    +c_5 n^2 \cdot 3^n + c_6 n ^3 \cdot 3^n + c_7 n^4 \cdot 3^ n
+    -\frac{1}{4}5^n
+    $$
+    After suffering from \red{tremendously TEDIOUS calculation}:
+    \pause
+    \begin{center}
+        $a_n^{gen} =$
+        \thinking\thinking\thinking\glass\glass\glass\confound\confound\confound\sleep\sleep\sleep
+        \bye\bye\bye\sweat{0.03}\sweat{0.03}\sweat{0.03}
+    \end{center} 
+    \begin{block}{Exam Question}
+        Find the general solution to 
+            $$ y_{n+2} - 5 y_{n+1} + 6 y_n = n ^2 \cdot 3^n$$
+        \yellow{Answer:}
+            $$ y_n = c_1 2^n +\(c_2 + \frac{109}{18} n -\frac{7}{6}n^2 + \frac{1}{8} n^3\) 3^n$$
+    \end{block}
+\end{frame}
+\section{Catalan Numbers}
+\begin{frame}
+    \frametitle{Catalan Numbers}
+    \mydef{Definition}
+    $$C_n = \frac{1}{n+1} \binom{2n}{n} \quad \quad n \in \bN$$
+    \mydef{Recurrence Relation}
+    $$C_n=\sum_{k=0}^{n-1} C_k C_{n-1-k}$$
+    \green{Fancy Examples:}
+    \begin{itemize}
+        \item The number of ways to \blue{parenthesize the product of $n + 1$ numbers}
+        \item The number of rooted trees with $n$ edges.
+        \item The number of \blue{stack permutation} of $n$ elements.
+        \item The number of triangulations of a polygon with $n + 2$ sides.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Explanation for Recurrence Relation}
+        \hh We consider the situation that adding bracket to the product $x_0 \cdot x_1\cdot x_2\cdot \cdot x_n$. Note that no matter how we add the bracket, there is one ``$\cdot$" that is outside all the bracket. 
+    [e.g. $(x_0\cdot(x_1\cdot x_2))\cdot x_3$, the last operator] We consider this operator to 
+    appear between $x_k$ and $x_{k+1}$ , there exists $C_k C_{n-k-1}$ approaches to add the brackets to determine the order of multiplication. The reason is that, there are $C_k$ ways to adding brackets to $x_0 \cdot x_1 \cdots  x_k$, and $C_{n-k-1}$ ways for $x_{k+1} \cdot x_{k+2} \cdots x_n$. Since the last operator could appear between any two among these $n+1$ numbers, so that
+    \begin{equation*}
+        \begin{aligned}
+            C_n &= C_0 C_{n-1} + C_1 C_{n-2}+ \cdot +C_{n-2}C_1+C_{n-1}C_0\\
+            &=\sum_{k=0}^{n-1} C_k C_{n-k-1}
+        \end{aligned}
+    \end{equation*}
+    Note that the initial value should be $C_0=1$ and $C_1=1$.
+\end{frame}
+\begin{frame}
+    \frametitle{Generating Function}
+    \hh Let $G(x)=\sum_{n=0}^\infty C_n x^n$ be the generating function for $\{C_n\}$. Then
+    \begin{equation*}
+        \begin{aligned}
+            G(x)^2&=\sum_{n=0}^\infty (\sum_{k=0}^n C_k C_{n-k})x^n\\
+            &= \sum_{n=1}^\infty (\sum_{k=0}^{n-1} C_k C_{n-1-k})x^{n-1}\\
+            &=\sum_{n=1}^\infty C_n x^{n-1}
+        \end{aligned}
+    \end{equation*}
+    \hh Hence, $xG(x)^2=\sum_{n=1}^\infty C_n x^n$, 
+    which implies $x G(x)^2 - G(x) +1 =0$. 
+    By solving this equation we can get $G(x)=(1\pm\sqrt{1-4x})/(2x)$ . \\ 
+    \hh We choose the minus sign because the plus 
+    sign would lead to a division by zero.
+\end{frame}
+\section{*Extra Topic}
+\begin{frame}
+    \frametitle{Dynamic Programming}
+    \hh Dynamic programming (DP) is both a mathematical \blue{optimization method} 
+    and a \blue{computer programming method}. 
+    The method was developed by \textbf{Richard Bellman} in the 1950s and has 
+    found applications in numerous fields.
+    \\ \vv 
+    \yellow{DP actually occurs in the slides! Recall:}
+    \begin{itemize}
+        \item Matrix Chain Multiplication
+        \item Longest Non-decresing Subsequence
+        \item Linear Recurrence Relation
+        \item $\dots$
+    \end{itemize}
+    \green{Common Features}
+    \begin{itemize}
+        \item same sub-problem
+        \item optimal sub-structure
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Where did the name come from?}
+    \hh 
+    An interesting question is, \blue{``Where did the name, dynamic programming, come from?"} 
+    \\
+    \vv \hh The 1950s were not good years for mathematical research.
+    We had a very interesting gentleman in Washington named \red{Wilson}. 
+    He was \red{Secretary of Defense}, and he actually had 
+    a pathological fear and hatred of the word ``research". 
+    I'm not using the term lightly; I'm using it precisely. 
+    His face would suffuse, he would turn red, and he would get violent if people used the term research in his presence. 
+    You can imagine how he felt, then, 
+    about the term mathematical.
+    \\ \hh The RAND Corporation was employed by the Air Force, and the Air Force had Wilson as its boss, essentially. 
+    Hence, I felt I had to do something to shield Wilson and the Air Force from the fact that 
+    I was really doing mathematics inside the RAND Corporation. 
+    
+\end{frame}
+\begin{frame}
+    \frametitle{Where did the name come from?}
+    \hh What title, what name, could I choose? 
+    In the first place I was interested in \green{planning, in decision making, in thinking}. 
+    But planning, is not a good word for various reasons. 
+    I decided therefore to use the word ``programming". 
+    I wanted to get across the idea that this was \green{dynamic}, 
+    this was \green{multistage}, this was \green{time-varying}. 
+    I thought, let's kill two birds with one stone. 
+    Let's take a word that has an absolutely precise meaning, namely dynamic, in the classical physical sense. 
+    It also has a very interesting property as an adjective, and that is it's impossible to use the word dynamic in a pejorative sense. 
+    Try thinking of some combination that will possibly give it a pejorative meaning. 
+    It's impossible. Thus, I thought dynamic programming was a good name. 
+    It was something \red{not even a Congressman could object to}. 
+    So I used it as an umbrella for my activities.
+\end{frame}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mypurple}{rgb}{0.58,0.02,0.82}
+\definecolor{myblue}{rgb}{0.1,0.2,0.9}
+\definecolor{myorange}{rgb}{0.73,0.38,0.17}
+% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\lstset{%
+	language=C++,
+	backgroundcolor=\color{white},
+	basicstyle=\tiny,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=t,
+	commentstyle=\color{mygreen},
+	deletekeywords={...},
+	escapeinside={\%*}{*)},
+	extendedchars=true,
+	frame=single,
+	keepspaces=true,
+	keywordstyle=\color{blue},
+	%language=Octave,
+	%otherkeywords={*,...},
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\tiny\color{mygray},
+	rulecolor=\color{black},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=1,
+	stringstyle=\color{mymauve},
+	tabsize=4,
+	title=\lstname
+}
+
+\lstdefinestyle{customcpp}{
+	belowcaptionskip=0pt,
+	breaklines=true,
+	%frame=L,
+	%xleftmargin=\parindent,
+	language=C++,
+	showstringspaces=false,
+	basicstyle=\scriptsize\ttfamily,
+	keywordstyle=\bfseries\color{mypurple},
+	commentstyle=\itshape\color{green!40!black},
+	identifierstyle=\color{myblue},
+	stringstyle=\color{myorange},
+}
+
+\lstset{escapechar=@,style=customcpp}
+\begin{frame}
+    \frametitle{Backpack Problem}
+    \hh Another typical example of DP is the \blue{Backpack Problem}.
+    \\\vv
+    \mydef{[Problem Statement]}
+    \hh We have There are $N$ items and a backpack of capacity $V$.  
+    The i-th item has a weight $w_i$ and a value $v_i$. 
+     Figure out which items to put into the backpack,
+     so that the total weight of these items does \green{not exceed the backpack capacity}, 
+     and \green{the total value reaches maximum}.  \\
+    \mydef{[DP Equation]}
+    \begin{equation*}
+        f\,[v\,]= \max \(f\,[v\,],f\,[v-v_i ]+w_i\) 
+    \end{equation*}
+    \mydef{[Example Question]}
+    \hh\url{https://vijos.org/p/1104}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Sample Code}
+    \hbox{
+    \begin{lstlisting}
+    #include <iostream>
+    using namespace std;
+    inline int max(int a,int b){return a>b?a:b;}
+    int main(){ 
+        int t,m,w,c;
+        cin >> t >> m;
+        int f[1001]={0};
+        for (int i = 0; i < m; i++){
+            cin >> w >> c;
+            for (int j = t; j >= w; j--){
+                f[j]=max(f[j-w]+c,f[j]);
+            }
+        }
+        int max_value=0;
+        for (int i = 0; i <= t; i++){
+            max_value=max(max_value,f[i]);
+        }
+        cout << max_value;
+        return 0;
+    }\end{lstlisting}
+    }
+\end{frame}
+\begin{frame}
+    \frametitle{Reference}
+    \begin{itemize}
+        \item Example From Horst's Slides FA2020.
+        \item Exercises from Ve203-2021-Fall TA Zhao Jiayuan.
+        \item Exercises from 2021-Fall-Ve203 Mid\_2 Exam.
+        \item Kenneth, H.Rosen. Translated by Xu Liutong etc. \itshape Discrete Mathematics amd Its Applications\myfont, 
+                 Eightth Edition, Chinese Abridgement. China Machine Press, 2019 print.
+        \item  Richard Bellman, Eye of the Hurricane: An Autobiography (1984, page 159)
+        \url{http://en.volupedia.org/wiki/Dynamic\_programming}
+        %\item Exercises from 2019-Fall-Ve203 TA Yan Xinyu.
+        %\item Contents from 2021-Fall Mid\_2\_RC by Xue Runze.
+        %\item Yan Shijian, etc. \textit{Basic Number Theory},
+        %fourth edition. Beijing: Higher Education Press, 2020.5 print.
+    \end{itemize}
+\end{frame}
+\end{document}

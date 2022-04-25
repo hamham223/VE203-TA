@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Binomial Coef\mbox {f}icients}{1}{0}{1}
+\beamer@sectionintoc {2}{Multichoosing}{7}{0}{2}
+\beamer@sectionintoc {3}{Inclusion-Exclusion}{12}{0}{3}
+\beamer@sectionintoc {4}{Calculator Workshop}{16}{0}{4}
+\beamer@sectionintoc {5}{Catalan Numbers}{23}{0}{5}
+\beamer@sectionintoc {6}{*Extra Topic}{26}{0}{6}
