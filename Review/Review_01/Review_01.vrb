@@ -1,0 +1,43 @@
+\frametitle{Truth Tree Example}
+\begin{minipage}[b]{0.43\linewidth}
+    Steps to go:
+    \begin{itemize}
+        \item Setup counter-examples
+        \item Apply rules: stcking first!!
+        \item Check for contradictions, close contradicting branches
+        \item Read the answer:
+            \begin{itemize}
+                \item All close: Valid
+                \item Even one open: Invalid
+            \end{itemize}
+    \end{itemize}
+    \begin{block}{Question}
+        \hspace{2em}
+        Is the truth tree unique?
+    \end{block}
+\end{minipage}
+\begin{minipage}[b]{0.42\linewidth}
+\begin{forest}
+[$A \rightarrow \(B \rightarrow C \)$, checked, for tree={s sep=2mm}
+    [$\lnot (B \rightarrow \(A \rightarrow C \))$, checked
+        [$\lnot A$
+            [$B$
+                [$\lnot \(A \rightarrow C\)$, checked
+                    [$A$]
+                ]
+            ]
+        ]
+        [$B \rightarrow C$, checked
+            [$B$
+                [$\lnot \(A \rightarrow C \)$, checked
+                    [$\lnot B$]
+                    [$C$
+                        [$\lnot C$]
+                    ]
+                ]
+            ]
+        ]
+    ]
+]
+\end{forest}
+\end{minipage}

@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{QuickSort}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{,}
+\PYG{+w}{               }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{left}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{right}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{left}\PYG{o}{\PYGZgt{}=}\PYG{n}{right}\PYG{p}{)}\PYG{+w}{  }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{key}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{left}\PYG{o}{+}\PYG{n}{right}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;}\PYG{c+c1}{// you can also choose right/left}
+\PYG{+w}{    }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{left}\PYG{o}{\PYGZlt{}}\PYG{n}{right}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{left}\PYG{o}{\PYGZlt{}}\PYG{n}{right}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{n}{right}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{          }\PYG{n}{v}\PYG{p}{[}\PYG{n}{right}\PYG{p}{]}\PYG{o}{==}\PYG{n}{v}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{[}\PYG{n}{right}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{n}{o}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]))}\PYG{+w}{  }\PYG{n}{right}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{left}\PYG{o}{\PYGZlt{}}\PYG{n}{right}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{n}{left}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{||}
+\PYG{+w}{          }\PYG{n}{v}\PYG{p}{[}\PYG{n}{left}\PYG{p}{]}\PYG{o}{==}\PYG{n}{v}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{[}\PYG{n}{left}\PYG{p}{]}\PYG{o}{\PYGZlt{}}\PYG{n}{o}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]))}\PYG{+w}{   }\PYG{n}{left}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{left}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{right}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{swap}\PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{n}{left}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{[}\PYG{n}{right}\PYG{p}{]);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{n}{swap}\PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{n}{left}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]);}\PYG{+w}{   }\PYG{c+c1}{//left== right}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{meet}\PYG{o}{=}\PYG{+w}{ }\PYG{n}{key}\PYG{p}{;}\PYG{+w}{     }\PYG{c+c1}{//divide into two parts}
+\PYG{+w}{    }\PYG{n}{QuickSort}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{left}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{meet}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{QuickSort}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{meet}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{right}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

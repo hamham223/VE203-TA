@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{Logics}{1}{0}{1}
+\beamer@sectionintoc {2}{Induction}{9}{0}{2}
+\beamer@sectionintoc {3}{*Extra Topic}{18}{0}{3}

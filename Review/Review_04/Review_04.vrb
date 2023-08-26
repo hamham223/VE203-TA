@@ -1,0 +1,22 @@
+\frametitle{Modified Bubble Sort}
+    \hbox{
+    \begin{lstlisting}
+        public static void bubble_sort(int[] intArr) {
+            int max = intArr.length - 1;
+            int secondCount = max;
+            //record where the exchange happen last time
+            for (int i = 0; i < max; i++) {
+                System.out.println( (i + 1) + "times");
+                boolean flag = true;int lastChangeIndex = 0;
+                for (int j = 0; j < secondCount; j++) {
+                    if (intArr[j] > intArr[j + 1]) {
+                        swap(Arr[j],Arr[j+1]);
+                        flag = false; lastChangeIndex = j;
+                    }
+                    System.out.println("Compare:"+(j+1)+", Result:"+ Arrays.toString(intArr));
+                }
+                if (flag) break;//already well ordering
+                secondCount = lastChangeIndex;//update
+            }
+        }\end{lstlisting}
+    }

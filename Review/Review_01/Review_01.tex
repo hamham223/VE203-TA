@@ -1,0 +1,342 @@
+\documentclass[xcolor=table]{beamer}
+\renewcommand\thesection{\arabic{section}}
+\newcommand{\myfont}{\rmfamily\normalsize\upshape\mdseries}
+\newcommand{\degree}{^\circ}
+\title{\sffamily Review I(Slides 4 - 71)}
+\subtitle{\textbf{Sets \& Logics}\\ Does the barber ever shave himself?}
+\institute[UM-SJTU JI]{University of Michigan-Shanghai Jiao Tong University Joint Institute}
+\author{HamHam}
+\usepackage{graphicx}
+\usepackage{picinpar}
+\usepackage{indentfirst}
+\usepackage{chemformula}
+\usepackage{geometry}
+\usepackage{subfigure}
+\usepackage{appendix}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{bm,bbm}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{multicol,multirow,multido}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{color,xcolor}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{textpos}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{pgf}
+\usepackage{JI_MathCourse_Notations}
+\usepackage{forest}
+\usepackage{prooftrees}
+\usepackage{mathrsfs}
+\usepackage{pifont}
+\usetheme[dove]{Boadilla}
+\usecolortheme{dolphin}
+%\pgfdeclaremask{figmask}{or_circuit.jpg}
+%\pgfdeclareimage[mask=figmask,width=0.6\textwidth]{or_circuit}{or_circuit_1.png}
+\useoutertheme{miniframes}
+\begin{document}
+    \usebackgroundtemplate{\tikz\node[opacity=0.25]{
+    \includegraphics[width=\paperwidth,
+    height=\paperheight]{hamster.jpg}
+    };}
+\begin{titlepage}
+    \begin{center}
+        VE203 - Discrete Mathmatics 
+    \end{center}
+\end{titlepage}
+\myfont
+
+\section{Abouts}
+\begin{frame}
+    \frametitle{Abouts}
+
+    \begin{itemize}
+        \item VE203 TA $\times 2$ / TA Mentor / intel BigDL intern
+        \item \url{https://github.com/hamham223}
+        \item RC is estimated to be about 1 hour
+        \item OH might be at early eight, hahaha!
+    \end{itemize}
+    
+    \vspace{2em}
+
+    \begin{block}{Question before we start}
+        \hspace{2em}
+        Ask yourself: Why did you select the course, discrete math this semester? What do you expect to gain? 
+    \end{block}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recommended Books \& Websites}
+    \begin{itemize}
+        \item Kenneth, H.Rosen. Translated by Xu Liutong etc. \itshape Discrete Mathematics amd Its Applications\myfont, 
+        Eightth Edition, Chinese Abridgement. China Machine Press, 2019 print.
+        \item E. Knuth, Donald. Translated by Su Daolin. \textit{The art of Computer Programming}, third edition.
+        Beijing: National Defense Industry Press, 2007.6 print.
+        \item \url{www.mhhe.com/rosen}
+        \item \url{https://leetcode.com/}
+    \end{itemize}
+
+\end{frame}
+
+\section{Sets}
+\begin{frame}
+    \frametitle{Set Operations}
+    \begin{itemize}
+        \item union \& intersection
+        \item set difference
+        \item symmetric difference
+        \item power set
+        \item cardinality
+        \item cartesian product
+        \item Venn Diagram v.s. Euler Diagram 
+    \end{itemize}
+    \vv
+    \begin{block}{Question}
+        How to compare the cardinality of two infinite sets?
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    1. Let $A, B, M$ be three sets and $A, B \siq M$. Show that
+    \begin{enumerate}
+        \item $A \cup(B \cap C)=(A \cup B) \cap(A \cup C)$
+        \item $A-(B \cup C)=(A-B) \cap(A-C)$
+        \item $(A - B) \cup (B - A) = (A \cup B) - (A \cap B)$
+    \end{enumerate}
+    \vv
+    \red{It's too boring! Let's just do the second one!}
+\end{frame}
+
+
+\section{Logicals}
+\begin{frame}
+    \frametitle{Logical Operations}
+    Five operations you need to be vary familiar with:
+    $$\neg ~~\wedge ~~\vee ~~  \rarrow ~~  \leftrightarrow$$
+
+    What about these?
+    $$\vdash ~~ \models ~~ \Rightarrow ~~ \Leftrightarrow ~~ \equiv$$
+
+    Please refer to:
+    \begin{itemize}
+        \item \url{https://www.zhihu.com/question/21191299}
+        \item \url{https://www.reddit.com/r/logic/comments/3nftuh/what_is_the_difference_between_and}
+    \end{itemize}
+    \begin{block}{Strategy}
+        \begin{itemize}
+            \item Change $p \rarrow q$ to $\neg p \vee q$
+            \item Truth Table
+            \item Be careful! $\LRarrow$ or $\lrarrow$?
+        \end{itemize}
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    2. Prove that
+    \begin{itemize}
+        \item $P \rarrow (Q \rarrow R) \LRarrow (P \wedge Q) \rarrow R$
+        \item $((P \vee Q) \wedge \neg Q) \rarrow P$ is a \textbf{\textcolor[rgb]{0,0.6,0.2}{tautology}}
+        \item $(A\rarrow(B\rarrow C))\rarrow (B\rarrow(A\rarrow C))$ is a tautology
+    \end{itemize}
+    \vv \vv
+    \red{Q: Simplifying experssions v.s. Truth tree? \\ \vv
+    A: Children make choices, let's try both!}
+\end{frame}
+
+\begin{frame}[fragile]{Truth Tree Example}
+\begin{minipage}[b]{0.43\linewidth}
+    Steps to go:
+    \begin{itemize}
+        \item Setup counter-examples
+        \item Apply rules: stcking first!!
+        \item Check for contradictions, close contradicting branches
+        \item Read the answer:
+            \begin{itemize}
+                \item All close: Valid
+                \item Even one open: Invalid
+            \end{itemize}
+    \end{itemize}
+    \begin{block}{Question}
+        \hspace{2em}
+        Is the truth tree unique?
+    \end{block}
+\end{minipage}
+\begin{minipage}[b]{0.42\linewidth}
+\begin{forest}
+[$A \rightarrow \(B \rightarrow C \)$, checked, for tree={s sep=2mm}
+    [$\lnot (B \rightarrow \(A \rightarrow C \))$, checked
+        [$\lnot A$
+            [$B$
+                [$\lnot \(A \rightarrow C\)$, checked
+                    [$A$]
+                ]
+            ]
+        ]
+        [$B \rightarrow C$, checked
+            [$B$
+                [$\lnot \(A \rightarrow C \)$, checked
+                    [$\lnot B$]
+                    [$C$
+                        [$\lnot C$]
+                    ]
+                ]
+            ]
+        ]
+    ]
+]
+\end{forest}
+\end{minipage}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to boolean algebra}
+    \vv
+    If we regard $\vee$ as $+$, $\wedge$ as $\cdot$, then the equation 
+        $$A\wedge(B\vee C\,)=(A\wedge B\,)\vee(A\wedge C\,)$$
+    is just the distributivity law:
+        $$A \cdot (B+C\,) = (A\cdot B) + (A \cdot C\,)$$
+    \vv
+    \textbf{\textit{\red{Do It Yourself:}}}\\
+    Check whether the axiom P1 -- P9 for rational numbers also hold for such operations.
+    \begin{block}{Note}
+        \hspace{2em}
+        This is not VE270! Don't mix up! It's always important to keep notations consistent!
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Properties}
+    \hh
+    We denote $\neg A$ as $\conj{A}$.
+    And, 1 means true ($\top$), 0 means false ($\bot$). 
+    We have the following: \vv
+    \begin{itemize}
+        \item $A \cdot 1 = A$
+        \item $A + 1 = 1$
+        \item $A + \conj{A} = 1$
+        \item $A \cdot \conj{A} = 0$
+        \item $\conj{\conj{A}}=A$
+        \item $\conj{A+B}=\conj{A}\cdot \conj{B}$
+        \item $\conj{A\cdot B}=\conj{A}+ \conj{B}$
+        \item $A+AB=A$
+        \item $\dots$
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{\sout{DNF \& CNF} (Deleted)}
+    \yellow{Definition:}
+    \begin{itemize}
+        \item  CNF: \textbf{product of sums} or an \textbf{AND of ORs}
+        \item  DNF: \textbf{sum of products} or an \textbf{OR of ANDS}
+    \end{itemize}
+    \textcolor[rgb]{0.95,0.75,0.95}{Examples:}
+    \begin{itemize}
+        \item $(\neg p \vee  q \vee r) \wedge (\neg q \vee \neg r) \wedge (r)$
+        \item $(\neg p \wedge q \wedge r) \vee (\neg q \wedge \neg r) $        
+    \end{itemize}
+    \begin{block}{Question}
+        What's the DNF/CNF for a tautology?
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{\sout{Exercise}}
+    3. Suppose that a truth table in \textbf{n} propositional variables 
+    is speciﬁed. Show that a compound proposition with 
+    this truth table can be written to a well-determined DNF. \\(Take from Vv186 Assignment Exercise 1.4)
+    \begin{table}[H]
+        \begin{tabular}{ccc}
+        $A$& $B$ &$f~(A,B)$  \\
+        \toprule
+        $T$ &$T$  & $T$ \\
+        $T$ &$F$  & $F$ \\
+        $F$ &$T$  & $T$ \\
+        $F$ &$F$  & $F$ \\
+        \bottomrule
+        \end{tabular}
+    \end{table}
+    \vv
+    $$f~(A,B)=(A \wedge B)\vee (\neg A \wedge B)$$
+\end{frame}
+\begin{frame}{Predicates}
+    \par A function $P: X \to \{\top, \perp \}$ is called a \green{\textbf{predicate}} on its domain $X$. 
+    \\\vv
+    \par It is a declarative sentence involving variables, when the variables a substituted with appropriate individuals we obtain a \green{\textbf{proposition}}.
+    \\\vv
+    \begin{itemize}
+        \item \textbf{Predicate:} $P(x): x>1$;
+        \item \textbf{Proposition:} $P(0): 0>1$ (false); $P(2): 2>1$ (true).
+    \end{itemize}
+
+    \vv 
+    \begin{block}{Question}
+        \hh
+        Statement = \_\_\_\_\_\_\_ + \_\_\_\_\_\_\_ 
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Logical Quantifiers}
+    Why is:
+    $$\exists y\forall xP(x, y) \Rightarrow  \forall x \exists yP(x, y)$$
+    
+    \begin{block}{Proof}
+        Let $y=n$, we can now phrase ``for all $x$, $P(x,n)$ is true". It follows that, ``for all $x$, there exists an $y$ (which is actually $n$) such that $P(x,n)$ is true."
+    \end{block}
+    
+    \vspace{1em}
+    Why is:
+    $$\forall x \exists y P(x, y) \not\Rightarrow  \exists y\forall x P(x, y)$$
+
+    \begin{block}{Proof}
+    A counter example is enough, let $P(x,y): x-y=1$. 
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{A proof from hamster¿}
+    Hamster wants to dis-prove $$\forall x \exists y P(x, y) \Rightarrow  \exists y\forall x P(x, y)$$
+
+    so it uses truth tree. (forgive its bad \LaTeX~ skill TT.)
+    \begin{itemize}
+        \item[1.]$\forall x \exists y P(x, y)$, \blue{premise}
+        \item[2.]$\neg \exists y\forall x P(x, y)$, \blue{$\neg$ consequent}
+        \item[3.]$\forall y \exists x \neg P(x,y)$ \blue{(2)}
+        \item[4.]$\forall x P(x,b) \backslash b$ \blue{(1)}
+        \item[5.]$\forall y \neg P(a,y) \backslash a$ \blue{(3)}
+        \item[6.]$P(a,b)$ \blue{(4)}
+        \item[7.]$\neg P(a,b)$ \blue{(5)}
+        \item[8.]\ding{55}
+    \end{itemize}
+\end{frame}
+\section{End}
+
+\begin{frame}
+    \frametitle{Reference}
+    \begin{itemize}
+        \item Pictures from Dr. Horst Hohberger.
+        \item Exercises from 2020-Ve203 Assignment2.
+        \item Exercises from 2021-Vv186 Assignment1.
+        \item Exercises from 2019--Vv186 TA-Zhang Leyang.
+        \item Contents from 2020 Fall Ve203 TA-Peng Chengjun.
+        \item Exercises from 2021 Fall Ve203 TA-Zhao Jiayuan.
+        \item Exercises from my 2021--Vv186 Mid1 RC.
+        \item Kenneth, H.Rosen. Translated by Xu Liutong etc. \itshape Discrete Mathematics amd Its Applications\myfont, 
+                 Eightth Edition, Chinese Abridgement. China Machine Press, 2019 print.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \Huge{$\mathcal{THANKS}$!}
+\end{frame}
+
+\end{document}

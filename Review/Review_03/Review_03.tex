@@ -1,0 +1,286 @@
+\documentclass{beamer}
+\newcommand{\myfont}{\rmfamily\normalsize\upshape\mdseries}
+\newcommand{\degree}{^\circ}
+\title{\sffamily Review III(Slides 127 - 164)}
+\subtitle{\textbf{Induction \& Relations }\\}
+\institute[UM-SJTU JI]{University of Michigan-Shanghai Jiao Tong University Joint Institute}
+\author{HamHam}
+\usepackage{graphicx}
+\usepackage{picinpar}
+\usepackage{indentfirst}
+\usepackage{chemformula}
+\usepackage{geometry}
+\usepackage{subfigure}
+\usepackage{appendix}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{bm,bbm}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{multicol,multirow,multido}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{color,xcolor}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{textpos}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{listings}
+\usepackage{JI_MathCourse_Notations}
+\usetheme[dove]{Boadilla}
+\usecolortheme{dolphin}
+%\pgfdeclaremask{figmask}{or_circuit.jpg}
+%\pgfdeclareimage[mask=figmask,width=0.6\textwidth]{or_circuit}{or_circuit_1.png}
+\useoutertheme{miniframes}
+\begin{document}
+    \usebackgroundtemplate{\tikz\node[opacity=0.25]{
+    \includegraphics[width=\paperwidth,
+    height=\paperheight]{hamster.jpg}
+    };}
+\begin{titlepage}
+    \begin{center}
+        VE203 - Discrete Mathmatics 
+    \end{center}
+\end{titlepage}
+\myfont
+\section{Induction}
+\begin{frame}
+    \frametitle{Updates}
+
+    \begin{itemize}
+        \item Next RC(6.12)'s location TBD
+        \item Please take the Midterm RC Survey on canvas
+        \item RC on 6.19 is canceled due to the Midterm
+        \item We have one lecture on 6.25 Sunday TT
+        \item RC on 6.26 is canceled  due to Dragon Boat Festival
+    \end{itemize}
+
+\end{frame}
+\begin{frame}
+    \frametitle{Induction ``Paradox" (Slides 93)}
+
+    For any $n \in \mathbb{N} \cut \{0\}$, there exist integers $a_n$ and $b_n$ s.t.
+    $$
+    \(\frac{1+\sqrt{5}}{2}\)^n = \frac{a_n+b_n \sqrt{5}}{2}
+    $$
+
+    \begin{enumerate}
+        \item Base case: $n=1$, clear by taking $a_1=b_1=1$
+        \item Inductive case: assume the IH for $n\geq 1$,
+        \begin{equation*}
+        \begin{aligned}
+            \(\frac{1+\sqrt{5}}{2}\)^{n+1} & = \frac{a_n + b_n \sqrt{5}}{2} \cdot \frac{1+\sqrt{5}}{2}\\
+            & = \frac{(a_n+5b_n)/2 + ((a_n+b_n)/2) \sqrt{5}}{2}
+        \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+    \begin{block}{Strategy: Enhance the original proposition}
+        \hh $a_n + 5b_n$ and $a_n+b_n$ must be both even! Namely, $a_n$ and $b_n$ are both even or 
+        both odd. Denoted as $2 \mid (a_n - b_n)$ or $a_n - b_n \equiv 1 \mod 2$.
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Structural Induction}
+    \hh Let $B$ be a set and let $C_1, ..., C_n$ be construction rules. 
+    Let $B$ be recursively defined to be the $\subseteq$-least set such that 
+    $B \subseteq A$ and $A$ is closed under the rules $C_1, ..., C_n$. 
+    Let $P(x)$ be a property. If
+    \begin{enumerate}
+        \item for all $b \in B$, $P(b)$ holds
+        \item for all $a_1, ..., a_m$ and $c$ and $1\leq i\leq n$, 
+        if $P(a_1), ..., P(a_m)$ all hold and $c$ is obtained from 
+        $a_1, ..., a_m$ by a single application of the rule $C_i$, 
+        then $P(c)$ holds
+    \end{enumerate}
+    Then $P(x)$ holds for every element in A.
+\end{frame}
+\begin{frame}
+    \frametitle{Structural Induction Tutorial}
+    \begin{block}{MIT 6.042J Example}
+        \hh 
+        Every $s$ in $M$ has the same number of ]'s and ['s.
+    \end{block}
+    Video available at:
+    \begin{itemize}
+        \item \url{https://www.youtube.com/watch?v=VWIDwHCGJDQ}
+        \item \url{https://www.bilibili.com/video/BV1n64y1i777/}
+    \end{itemize}
+
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    Taken from Ve203 FA 2020 assignment 2: 
+    \\ \vs{2em}
+    1. Let $S \subset \bN$ be defined by
+    \begin{itemize}
+        \item $(0,0)\in S$
+        \item $(a,b)\in S \Rarrow \left(\left(\left(a+2,b+3\right)\in S\,\right)\wedge \left(\left(a+3,b+2\right)\in S\,\right)\right)$ 
+    \end{itemize}
+    Use structural induction to show that $(a, b) \in S$ implies $5 \mid (a + b)$.
+    \\\textbf{(3 Marks)}
+\end{frame}
+\section{Relations}
+\begin{frame}
+    \frametitle{Relation}
+    \hh A subset $R \subset A \times B$ is called a (binary) relation from $A$ to $B$. 
+    If $A = B$,	we say that $R$ is a \textbf{\textcolor[rgb]{0,0.6,0.2}{relation}} on $A$.\\ 
+    \vv
+    \begin{block}{Quick Check}
+        \begin{itemize}
+            \item domain$(R)=\{x \mid \exists y(x R y)\}$
+            \item range$(R)=\{y \mid \exists x(x R y)\}$
+            \item $R = \varnothing $: the empty relation
+            \item $A = B$: identity relation
+            \item The relation $A \times B$ itself? 
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+\begin{frame}
+    \frametitle{Functions}
+    \hh A \textbf{\textcolor[rgb]{0,0.6,0.2}{function}} is a relation $F$ such that $$\forall x \in \operatorname{dom} F(\exists ! y(x F y)).$$
+    
+    \begin{block}{Quick Check}
+        \begin{itemize}
+            \item  For a function $F$ and a point $x \in \operatorname{dom} (F)$, the unique $y$ such that $xFy$ is called the \blue{value} of $F$ at $x$ and is denoted $F(y)$. 
+            \item Given function $F : A \to B$, then $\forall x, y \in A(x = y \Rightarrow F(x) = F(y))$.
+            \item Partial Function/ Total Tunction.
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+\begin{frame}
+    \frametitle{Operations on Functions}
+    \par For \red{arbitrary} sets A, relations F, and functions G,
+	\vv
+    \begin{itemize}
+		\item \blue{Inverse:} $F^T = F^{-1} = \{(y, x) \mid xFy\}$.
+        \item \blue{Composition:} $F \circ G = \{(x, z) \mid \exists y \in A(xFy \wedge yGz)\}$.
+		\item \blue{Restriction:} $F \mid A = \{(x, y) \in F \mid x \in A \}$.
+		\item \blue{Image:} $F(A) = \operatorname{ran}(F \mid A) = \{y \mid (\exists x \in A) xFy \}$. 
+	\end{itemize}
+    \vv
+    If $F$ is a function, then $F(A) = \{F(x) \mid x \in A\}$.
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    2. Let $A: \bR^3 \to \bR^3 $ be given by
+    \begin{small}
+        \begin{equation*}
+            A=\maThree{1}{2}{3}{2}{1}{2}{1}{1}{1}.
+        \end{equation*}
+    \end{small}
+    Let 
+    \begin{small}
+        \begin{equation*}
+            U=\text{span} {\left \{\begin{pmatrix}1\\1\\0\\\end{pmatrix}\right \} }
+        \end{equation*} 
+    \end{small}
+    \begin{block}{Question}
+        \begin{itemize}
+            \item[-]What's the restriction of $A$ to $U\,$? 
+            \item[-]What's the image of $U$ under $A$?
+        \end{itemize}
+    \end{block}
+    (Taken from vv286 lecture slides)
+\end{frame}
+\begin{frame}
+    \frametitle{*-jectivity}
+    \parbox{\textwidth}{
+		\par Given a function $F : A \to B$, with $\operatorname{dom} F = A$ and $ \operatorname{ran}(F) \subset B$, then
+		\begin{itemize}
+			\item[-] $F$ is \blue{injective or \red{one-to-one}} if $\forall x, y \in A(F(x) = F(y) \Rightarrow x = y)$;
+			\item[-] $F$ is \blue{surjective or \red{onto}} if ran$(F) = B$;
+			\item[-] $F$ is \yellow{bijective} if it is both injective and surjective.
+		\end{itemize}
+		\vs{0.3em}
+		\par Given a function $F : A \to B$, $A \neq \varnothing$, then
+		\begin{itemize}
+			\item[-] There exists a function $G : B \to A$ (a \blue{``left inverse''}) such that
+			$G \circ F = id_A \Leftrightarrow F$ is one-to-one;
+			\item[-] There exists a function $G : B \to A$ (a \blue{``right inverse''}) such that
+			$F \circ G = id_B \Leftrightarrow F$ is onto.
+		\end{itemize}
+        \begin{block}{Let $f : A \to B, g : B \to C$,}
+            \begin{itemize}
+                \item[-] If $g \circ f$ is injective, then $f$ is injective.
+                \item[-] If $g \circ f$ is surjective, then $g$ is surjective
+            \end{itemize}
+        \end{block}
+		%\par 
+	}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    3. Recall that $\mathbb{Z}$ denotes the set of integers, $\mathbb{Z}^+$ the set of positive integers, and $\mathbb{Q}$ the set of rational numbers. 
+    Define a function: 
+    \begin{equation*}
+    f: \mathbb{Z} \times \mathbb{Z}^+ \to \mathbb{Q},~~~~~~~~~~
+    f~(p,q) = \frac{p}{q}.
+    \end{equation*}
+    \begin{enumerate}
+    	\item Is $f$ an injection? Why?
+    	\item Is $f$ a surjection? Why?
+    	\item Is $f$ a bijection? Why?
+    \end{enumerate}
+\end{frame}
+\begin{frame}
+    \frametitle{Definition}
+    \parbox{\textwidth}{
+		\par A (binary) relation $R$ on $A$, \textit{i.e.,} $R \subset A \times A$, is
+		\begin{itemize}
+			\item[-] \textbf{ref\mbox{l}exive} if $aRa \Rightarrow \top$.
+			\item[-] \textbf{symmetric} if $aRb \Leftrightarrow bRa$.
+			\item[-] \textbf{transitive} if $aRb \wedge bRc \Rightarrow aRc$.
+			\item[-] \textbf{anti-symmetric} if $aRb \wedge bRa \Rightarrow a = b$.
+			\item[-] asymmetric if $aRb \wedge bRa \Rightarrow \perp$.
+			\item[-] total if $aRb \vee bRa \Rightarrow \top$.
+		\end{itemize}
+		\par \phantom{ji}
+		\par \textbf{(Non-strict) Partial order}: reflexive, antisymmetric, and transitive.
+		\par \textbf{Equivalence relation}: reflexive, symmetric, and transitive.
+        \par \textbf{Total order:} Partial order + total.
+    }
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    4. Recall that $\mathbb{R}$ denotes the set of real numbers, while $\mathbb{Z}$ denotes the set of integers. Define a relation $\sim$ on $\mathbb{R}$ by
+    \begin{equation*}
+        x \sim y \Leftrightarrow x - y \in \mathbb{Z}
+    \end{equation*}
+    for any $x, y \in \mathbb{R}$. Prove that $\sim$ is an equivalence relation.
+\end{frame}
+\begin{frame}
+    \frametitle{Equivalence Class}
+    Given an equivalence relation $R$ on $A$,
+    \begin{itemize}
+        \item \blue{Equivalence class containing $x$} $$\left[ x\right]_R = \{t \in A \mid xRt\}.$$
+        \item This is also a partition for $A$.
+        \item For $x , y \in A$, $$\left[ x \right]_R  = \left[ y \right]_R \Leftrightarrow xRy.$$
+        \item Quotient set is given by $$A/R = \{[x]R \mid x \in A\}.$$
+    \end{itemize}
+\end{frame}
+
+\section{End}
+
+\begin{frame}
+    \frametitle{Reference}
+
+    \begin{itemize}
+        \item Examples from Vv286 Lecture Slides.
+        \item Exercises from 2021-Fall-Ve203 TA Zhao Jiayuan
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    \centering
+    \Huge{$\mathcal{THANKS}$!}
+\end{frame}
+
+\end{document}

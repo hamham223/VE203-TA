@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{bubble\PYGZus{}sort}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{[]} \PYG{n}{intArr}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{max} \PYG{o}{=} \PYG{n}{intArr}\PYG{p}{.}\PYG{n+na}{length} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{secondCount} \PYG{o}{=} \PYG{n}{max}\PYG{p}{;}  \PYG{c+c1}{//record where the exchange happen last time}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{max}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(} \PYG{p}{(}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{l+s}{\PYGZdq{}times\PYGZdq{}} \PYG{p}{);}
+        \PYG{k+kt}{boolean} \PYG{n}{flag} \PYG{o}{=} \PYG{k+kc}{true}\PYG{p}{;}\PYG{k+kt}{int} \PYG{n}{lastChangeIndex} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{secondCount}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{intArr}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{intArr}\PYG{o}{[}\PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{swap}\PYG{p}{(}\PYG{n}{Arr}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]}\PYG{p}{,}\PYG{n}{Arr}\PYG{o}{[}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{);}
+                \PYG{n}{flag} \PYG{o}{=} \PYG{k+kc}{false}\PYG{p}{;}
+                \PYG{n}{lastChangeIndex} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Compare:\PYGZdq{}}\PYG{o}{+}\PYG{p}{(}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{+}\PYG{l+s}{\PYGZdq{}, Result:\PYGZdq{}}\PYG{o}{+}\PYG{n}{Arrays}\PYG{p}{.}\PYG{n+na}{toString}\PYG{p}{(}\PYG{n}{intArr}\PYG{p}{));}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{flag}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;} \PYG{c+c1}{//already well ordering}
+        \PYG{n}{secondCount} \PYG{o}{=} \PYG{n}{lastChangeIndex}\PYG{p}{;} \PYG{c+c1}{//update}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

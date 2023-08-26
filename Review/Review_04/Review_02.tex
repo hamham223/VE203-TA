@@ -1,0 +1,409 @@
+\documentclass{beamer}
+\newcommand{\myfont}{\rmfamily\normalsize\upshape\mdseries}
+\newcommand{\degree}{^\circ}
+\title{\sffamily Review II(Slides 103 - 159)}
+\subtitle{\textbf{Relations }\\}
+\institute[UM-SJTU JI]{University of Michigan-Shanghai Jiao Tong University Joint Institute}
+\author{HamHam}
+\usepackage{graphicx}
+\usepackage{picinpar}
+\usepackage{indentfirst}
+\usepackage{chemformula}
+\usepackage{geometry}
+\usepackage{subfigure}
+\usepackage{appendix}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{bm,bbm}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{multicol,multirow,multido}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{color,xcolor}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{textpos}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{listings}
+\input{../../List_of_Notation/JI_MathCourse_Notations.sty}
+\usetheme[dove]{Boadilla}
+\usecolortheme{dolphin}
+%\pgfdeclaremask{figmask}{or_circuit.jpg}
+%\pgfdeclareimage[mask=figmask,width=0.6\textwidth]{or_circuit}{or_circuit_1.png}
+\useoutertheme{miniframes}
+\begin{document}
+    \usebackgroundtemplate{\tikz\node[opacity=0.25]{
+    \includegraphics[width=\paperwidth,
+    height=\paperheight]{hamster.jpg}
+    };}
+\begin{titlepage}
+    \begin{center}
+        VE203 - Discrete Mathmatics 
+    \end{center}
+\end{titlepage}
+\myfont
+\section{Relations}
+\begin{frame}
+    \frametitle{Relation}
+    \hh A subset $R \subset A \times B$ is called a (binary) relation from $A$ to $B$. 
+    If $A = B$,	we say that $R$ is a relation on $A$.\\ 
+	\vv
+    Check the following:
+    \begin{itemize}
+        \item domain$(R)=\{x \mid \exists y(x R y)\}$
+        \item range$(R)=\{y \mid \exists x(x R y)\}$
+        \item $R = \emptyset$: the empty relation
+        \item $A = B$: identity relation
+        \item The relation $A \times B$ itself? 
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Functions}
+    \hh A function is a relation $F$ such that $$\forall x \in \operatorname{dom} F(\exists ! y(x F y))$$.
+	Check the following:
+    \begin{itemize}
+        \item  For a function $F$ and a point $x \in \operatorname{dom} (F)$, the unique $y$ such that $xFy$ is called the \blue{value} of $F$ at $x$ and is denoted $F(y)$. 
+        \item Given function $F : A \to B$, then $\forall x, y \in A(x = y \Rightarrow F(x) = F(y))$.
+        \item Partial Function/ Total Tunction.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Operations on Functions}
+    \par For \red{arbitrary} sets A, relations F, and functions G,
+	\vv
+    \begin{itemize}
+		\item \blue{Inverse:} $F^T = F^{-1} = \{(y, x) \mid xFy\}$.
+        \item \blue{Composition:} $F \circ G = \{(x, z) \mid \exists y \in A(xFy \wedge yGz)\}$.
+		\item \blue{Restriction:} $F \mid A = \{(x, y) \in F \mid x \in A \}$.
+		\item \blue{Image:} $F(A) = \operatorname{ran}(F \mid A) = \{y \mid (\exists x \in A) xFy \}$. 
+	\end{itemize}
+    \vv
+    If $F$ is a function, then $F(A) = \{F(x) \mid x \in A\}$.
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    1. Let $A: \bR^3 \to \bR^3 $ be given by
+    $$A=\maThree{1}{2}{3}{2}{1}{2}{1}{1}{1}.$$
+    Let 
+    $$U=\text{span} {\left \{\begin{pmatrix}1\\1\\0\\\end{pmatrix}\right \} }$$
+    \begin{block}{Question}
+        \begin{itemize}
+            \item[-]What's the restriction of $A$ to $U\,$? 
+            \item[-]What's the image of the restriction?
+            \item[-]What's the inverse of the restriction? 
+        \end{itemize}
+    \end{block}
+    (Take from vv286 lecture slides)
+\end{frame}
+\begin{frame}
+    \frametitle{-jectivity}
+    \parbox{\textwidth}{
+		\par Given a function $F : A \to B$, with $\operatorname{dom} F = A$ and $ \operatorname{ran}(F) \subset B$, then
+		\begin{itemize}
+			\item[-] $F$ is \blue{injective or \red{one-to-one}} if $\forall x, y \in A(F(x) = F(y) \Rightarrow x = y)$;
+			\item[-] $F$ is \blue{surjective or \red{onto}} if ran$(F) = B$;
+			\item[-] $F$ is \yellow{bijective} if it is both injective and surjective.
+		\end{itemize}
+		\vs{0.3em}
+		\par Given a function $F : A \to B$, $A \neq \varnothing$, then
+		\begin{itemize}
+			\item[-] There exists a function $G : B \to A$ (a \blue{``left inverse''}) such that
+			$G \circ F = id_A \Leftrightarrow F$ is one-to-one;
+			\item[-] There exists a function $G : B \to A$ (a \blue{``right inverse''}) such that
+			$F \circ G = id_B \Leftrightarrow F$ is onto.
+		\end{itemize}
+        \begin{block}{Let $f : A \to B, g : B \to C$,}
+            \begin{itemize}
+                \item[-] If $g \circ f$ is injective, then $f$ is injective.
+                \item[-] If $g \circ f$ is surjective, then $g$ is surjective
+            \end{itemize}
+        \end{block}
+		%\par 
+	}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    2. Recall that $\mathbb{Z}$ denotes the set of integers, $\mathbb{Z}^+$ the set of positive integers, and $\mathbb{Q}$ the set of rational numbers. 
+    Define a function: 
+    \begin{equation*}
+    f: \mathbb{Z} \times \mathbb{Z}^+ \to \mathbb{Q},~~~~~~~~~~
+    f~(p,q) = \frac{p}{q}.
+    \end{equation*}
+    \begin{enumerate}
+    	\item Is $f$ an injection? Why?
+    	\item Is $f$ an surjection? Why?
+    	\item Is $f$ an bijection? Why?
+    \end{enumerate}
+\end{frame}
+\begin{frame}
+    \frametitle{Definition}
+    \parbox{\textwidth}{
+		\par A (binary) relation $R$ on $A$, \textit{i.e.,} $R \subset A \times A$, is
+		\begin{itemize}
+			\item[-] \textbf{ref\mbox{l}exive} if $aRa \Rightarrow \top$.
+			\item[-] \textbf{symmetric} if $aRb \Leftrightarrow bRa$.
+			\item[-] \textbf{transitive} if $aRb \wedge bRc \Rightarrow aRc$.
+			\item[-] \textbf{anti-symmetric} if $aRb \wedge bRa \Rightarrow a = b$.
+			\item[-] asymmetric if $aRb \wedge bRa \Rightarrow \perp$.
+			\item[-] total if $aRb \vee bRa \Rightarrow \top$.
+		\end{itemize}
+		\par \phantom{ji}
+		\par \textbf{(Non-strict) Partial order}: reflexive, antisymmetric, and transitive.
+		\par \textbf{Equivalence relation}: reflexive, symmetric, and transitive.
+        \par \textbf{Total order:} Partial order + total.
+    }
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    3. Recall that $\mathbb{R}$ denotes the set of real numbers, while $\mathbb{Z}$ denotes the set of integers. Define a relation $\sim$ on $\mathbb{R}$ by
+    \begin{equation*}
+        x \sim y \Leftrightarrow x - y \in \mathbb{Z}
+    \end{equation*}
+    for any $x, y \in \mathbb{R}$. Prove that $\sim$ is an equivalence relation.
+\end{frame}
+\begin{frame}
+    \frametitle{Equivalence Class}
+    Given an equivalence relation $R$ on $A$,
+    \begin{itemize}
+        \item \blue{Equivalence class containing $x$} $$\left[ x\right]_R = \{t \in A \mid xRt\}.$$
+        \item This is also a partition for $A$.
+        \item For $x , y \in A$, $$\left[ x \right]_R  = \left[ y \right]_R \Leftrightarrow xRy.$$
+        \item Quotient set is given by $$A/R = \{[x]R \mid x \in A\}.$$
+    \end{itemize}
+\end{frame}
+\section{Equinumerosity}
+\begin{frame}
+    \frametitle{Equinumerosity}
+    \yellow{Definition:}\\
+    \hh A set $A$ is equinumerous to a set $B$ (written $A \es B$) if there is a 
+    \blue{bijection} from A to B.
+    \\
+    \cha{Examples:}\\
+    \begin{itemize}
+        \item $\bR \es (0,1)$
+        \item $\bN \nes \bR$
+        \item $\bN \es \bN^2$
+        \item $\bN \es \bN^3$
+        \item $\bN \es \bN^\bN?$
+    \end{itemize}
+    \begin{block}{Question}
+        \begin{itemize}
+            \item[-] Why isn't it an \blue{equivalence relation}?
+            \item[-] How to prove/disprove a equinumerosity?
+            \item[-] How is $\bN,\bZ,\bQ,\bR$ constructed respectively? 
+        \end{itemize}
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Cantor's Theorem}
+    \fbox{
+        \parbox{0.95\textwidth}{
+            \textbf{Cantor’s Theorem}:
+            \begin{itemize}
+                \item $\mathbb{R} \not\approx \mathbb{N}$.
+                \item For every set $A$, $A \not\approx \mathcal{P}(A)$.
+            \end{itemize}
+        }
+    }
+    \vs{2em}
+    \begin{block}{Top asked questions}
+        \begin{itemize}
+            \item $\calP(\bN) = \bR$? 
+            \item Why is $\bR$ not countable? 
+            \item How to prove cantor's theorem? 
+        \end{itemize}
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Example}
+    \hh Let $A = \left\{ {a,b,c,d,e} \right\}$. The mapping $f:A \to \mathcal{P}\left( A \right)$ is defined by
+    \begin{equation*}
+        {f\left( a \right) = \left\{ {a,d,e} \right\},\;}\kern0pt{f\left( b \right) = \left\{ {a,c} \right\},\;}\kern0pt{f\left( c \right) = \left\{ {a,b,d,e} \right\},\;}\kern0pt{f\left( d \right) = \varnothing,\;}\kern0pt{f\left( e \right) = \left\{ {b,c,e} \right\}.}
+    \end{equation*}
+    \par Determine the set $B = \left\{ {x \in A \mid x \not\in f\left( x \right)} \right\}.$
+    \vv
+    \begin{block}{Solution}
+        This set is used in the proof of Cantor’s theorem. We see that
+        \begin{equation*}
+            {a \in f\left( a \right),\;}\kern0pt{b \notin f\left( b \right),\;}\kern0pt{c \notin f\left( c \right),\;}\kern0pt{d \notin f\left( d \right),\;}\kern0pt{e \in f\left( e \right).}
+        \end{equation*}
+    \par Hence, ${B = \left\{ {x \in A \mid x \notin f\left( x \right)} \right\} }={ \left\{ {b,c,d} \right\}.}$
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    4. The mapping function $f:\mathbb{N} \to \mathcal{P}\left( \mathbb{N} \right)$ is defined by 
+    \begin{equation*}
+        f\left( n \right) = \mathbb{N}\backslash \left\{ {{n^2} - \left( {2m - 1} \right)n} \right\},
+    \end{equation*}
+    where $n,m \in \mathbb{N}$. Determine the set $B = \left\{ {x \in A \mid x \not\in f\left( x \right)} \right\}.$
+    \vs{4em}\\
+    5. Prove that the set of all sets does not exist.
+\end{frame}
+\section{Pigeonhole Principle}
+\begin{frame}
+    \frametitle{Pigeonhole Principle}
+    \yellow{Two versions¿:}
+    \vv 
+    \begin{enumerate}
+        \item[xxs] Let $r,s \in \mathbb{N} \backslash\!\left\lbrace 0 \right\rbrace $, 
+        if a set containing at least ${rs} + 1$ elements is partitioned into $r$ subsets, 
+        then some subsets contains at least $s + 1$ elements.
+        \item[dxs] No set of the form $[n] = \left\lbrace 1, \cdots, n\right\rbrace$ 
+        is equinumerous to a proper subset of itself, 
+        where $n \in \mathbb{N}$.
+	\end{enumerate}
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    6. Consider a sequence $\left\lbrace \sqrt{3}, 2\sqrt{3}, 3\sqrt{3}, \cdots \right\rbrace$.
+    Prove that there are infinite number of terms have a mantissa of less than 0.01.
+    
+
+\end{frame}
+\section{*Extra Topic}
+\begin{frame}
+    \frametitle{Sorting Algorithms}
+    We have lots lots of sorting algorithms!
+    \vv
+    \begin{itemize}
+        \item Demostration: \url{https://www.byteflying.com/archives/6171}
+        \item Classification
+        \item Costs
+                \begin{itemize}
+                    \item Time complexity (Worst/Averge/Best)
+                    \item Space complexity
+                    \item Stability
+                \end{itemize}
+    \end{itemize}
+    \begin{block}{Question}
+        \hh How to choose a sorting algorithms that most satisfy your need?
+    \end{block}
+\end{frame}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mypurple}{rgb}{0.58,0.02,0.82}
+\definecolor{myblue}{rgb}{0.1,0.2,0.9}
+\definecolor{myorange}{rgb}{0.73,0.38,0.17}
+% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\lstset{%
+	language=C++,
+	backgroundcolor=\color{white},
+	basicstyle=\tiny,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=t,
+	commentstyle=\color{mygreen},
+	deletekeywords={...},
+	escapeinside={\%*}{*)},
+	extendedchars=true,
+	frame=single,
+	keepspaces=true,
+	keywordstyle=\color{blue},
+	language=Octave,
+	%otherkeywords={*,...},
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\tiny\color{mygray},
+	rulecolor=\color{black},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=1,
+	stringstyle=\color{mymauve},
+	tabsize=4,
+	title=\lstname
+}
+
+\lstdefinestyle{customcpp}{
+	belowcaptionskip=0pt,
+	breaklines=true,
+	%frame=L,
+	%xleftmargin=\parindent,
+	language=C++,
+	showstringspaces=false,
+	basicstyle=\scriptsize\ttfamily,
+	keywordstyle=\bfseries\color{mypurple},
+	commentstyle=\itshape\color{green!40!black},
+	identifierstyle=\color{myblue},
+	stringstyle=\color{myorange},
+}
+
+\lstset{escapechar=@,style=customcpp}
+\begin{frame}[fragile]
+    \frametitle{Quick Sort with Second key word}
+    \hbox{
+    \begin{lstlisting}
+    void QuickSort(vector<int>& v,int left,int right,vector<int>& o){
+        if (left>=right)  return;
+        int key = (left+right)/2;// you can also choose right/left
+        while (left<right){
+            while (left<right&& (v[right] > v[key] || v[right]==v[key] && o[right]>o[key]))  right--;
+            while (left<right&& (v[left] <= v[key] || v[left]==v[key] && o[left]<o[key]))   left++;  
+            if (left < right) swap(v[left], v[right]);   
+        }
+        swap(v[left], v[key]);   //left== right
+        int meet= key;     //divide into two parts
+        QuickSort(v, left, meet-1); 
+        QuickSort(v, meet+1, right); 
+    }\end{lstlisting}
+    }
+    
+
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Modified Bubble Sort}
+    \hbox{
+    \begin{lstlisting}
+        public static void bubble_sort(int[] intArr) {
+            int max = intArr.length - 1;
+            int secondCount = max;
+            //record where the exchange happen last time
+            for (int i = 0; i < max; i++) {
+                System.out.println( (i + 1) + "times");
+                boolean flag = true;int lastChangeIndex = 0;
+                for (int j = 0; j < secondCount; j++) {
+                    if (intArr[j] > intArr[j + 1]) {
+                        swap(Arr[j],Arr[j+1]);
+                        flag = false; lastChangeIndex = j;
+                    }
+                    System.out.println("Compare:"+(j+1)+", Result:"+ Arrays.toString(intArr));
+                }
+                if (flag) break;//already well ordering
+                secondCount = lastChangeIndex;//update
+            }
+        }\end{lstlisting}
+    }
+\end{frame}
+\begin{frame}
+    \frametitle{Exercise}
+    7. Try to implement \blue{three-way merge sort} in C++.
+    If you know \blue{Master Theorem}, try to calculate the time complexity and compare with the 
+    original merge sort.
+    \vs{4em}\\
+    8. Finish the following exercise regarding sorting algorithms:
+    \begin{itemize}
+        \item \url{https://vijos.org/p/1398}
+        \item \url{https://vijos.org/p/1257}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Reference}
+
+    \begin{itemize}
+        \item Examples from Vv286 Lecture Slides.
+        \item Exercises from 2021-Fall-Ve203 TA Zhao Jiayuan
+        \item Stable Quick Sort, \url{https://blog.csdn.net/liuchenjane/article/details/72902325}
+        \item Modified Bubble Sort, \url{https://blog.csdn.net/weixin_43168559/article/details/88873585}
+    \end{itemize}
+
+\end{frame}
+\end{document}
