@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}Sets}{3}%
+\contentsline {subsection}{\numberline {1.1}Exercise}{3}%
+\contentsline {subsection}{\numberline {1.2}Solution}{3}%
+\contentsline {section}{\numberline {2}Logic}{4}%
+\contentsline {subsection}{\numberline {2.1}Exercise}{4}%
+\contentsline {subsection}{\numberline {2.2}Solution 1 - Logical Simplification}{4}%
+\contentsline {subsection}{\numberline {2.3}Solution 2 - Truth Tree}{5}%
+\contentsline {section}{\numberline {3}Induction}{6}%
+\contentsline {subsection}{\numberline {3.1}Exercise}{6}%
+\contentsline {subsection}{\numberline {3.2}Solution}{6}%
+\contentsline {section}{\numberline {4}Relations}{7}%
+\contentsline {subsection}{\numberline {4.1}Exericse}{7}%
+\contentsline {subsection}{\numberline {4.2}Solution}{8}%
+\contentsline {section}{\numberline {5}Equinumerosity}{9}%
+\contentsline {subsection}{\numberline {5.1}Exercise}{9}%
+\contentsline {subsection}{\numberline {5.2}Solution}{9}%
+\contentsline {section}{\numberline {6}Pigeonhole Principle}{11}%
+\contentsline {subsection}{\numberline {6.1}Exercise}{11}%
+\contentsline {subsection}{\numberline {6.2}Solution}{11}%
+\contentsline {section}{\numberline {7}Partial Order}{12}%
+\contentsline {subsection}{\numberline {7.1}Exercise}{12}%
+\contentsline {subsection}{\numberline {7.2}Solution}{13}%
+\contentsline {section}{\numberline {8}Euclidean Algorithm}{13}%
+\contentsline {subsection}{\numberline {8.1}Exericse}{13}%
+\contentsline {subsection}{\numberline {8.2}Solution}{14}%
+\contentsline {section}{\numberline {9}Group Theory}{15}%
+\contentsline {subsection}{\numberline {9.1}Exercise}{15}%
+\contentsline {subsection}{\numberline {9.2}Solution}{16}%
+\contentsline {section}{\numberline {10}Graph Theory}{18}%
+\contentsline {subsection}{\numberline {10.1}Exercise}{18}%
+\contentsline {subsection}{\numberline {10.2}Solution}{19}%
