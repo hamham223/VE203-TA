@@ -6,7 +6,7 @@ VE203-TA works, all RC slides here!
 
 + Professor: Prof. Runze Cai
 + Semester: 2023 SU
-+ Acknowledgement: Great thanks to the Professor, UEO's support, Students, and we the teaching Group (Yue Huang and me).
++ Acknowledgement: Great thanks to the Professor, UEO's support, Students, and we the teaching Group ([Yue Huang](https://github.com/h-yyyue) and me).
 
 ### Contents
 
